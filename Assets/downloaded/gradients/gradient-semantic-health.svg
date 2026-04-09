@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400">
+  <defs>
+    <linearGradient id="health-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#6B8F71" stop-opacity="0.15"/>
+      <stop offset="33%" stop-color="#5F8A8B" stop-opacity="0.10"/>
+      <stop offset="66%" stop-color="#6B7D8A" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#B8860B" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="400" fill="url(#health-gradient)"/>
+</svg>

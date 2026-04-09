@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What We Measure | Apex Lab</title>
+<meta name="description" content="Explore the health metrics Apex Lab tracks — heart rate, stress, Body Battery, sleep, HRV, respiration, movement, and calendar-linked work patterns.">
+<link rel="canonical" href="https://apexlab.nl/what-we-measure.html">
+<link rel="icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     FLOATING PILL NAV
+     ═══════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-pill scrolled">
+    <a href="/" class="nav-logo"><img src="Assets/logos/Wit.png" alt="Apex Lab" class="nav-logo-img"></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="what-we-measure.html">What We Measure</a></li>
+      <li><a href="for-teams.html">For Teams</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><span class="sep"></span></li>
+      <li><a href="https://dashboard.apexlab.nl">Login</a></li>
+      <li><a href="mailto:info@apexlab.nl" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     PAGE HERO
+     ═══════════════════════════════════ -->
+<section class="page-hero" style="background-image: url('Assets/images/wearables/wearable-heart-rate-tracking.png');">
+  <div class="page-hero-content">
+    <h1>What We Measure</h1>
+    <p>Continuous physiological data from Garmin wearables, linked to your real work calendar. Eight domains of health intelligence.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     TAB NAVIGATION
+     ═══════════════════════════════════ -->
+<section class="metrics-section">
+  <div class="container">
+
+  <div class="tab-nav">
+    <button class="active" data-tab="panel-hr">Heart Rate</button>
+    <button data-tab="panel-stress">Stress</button>
+    <button data-tab="panel-bb">Body Battery</button>
+    <button data-tab="panel-sleep">Sleep</button>
+    <button data-tab="panel-hrv">HRV</button>
+    <button data-tab="panel-resp">Respiration</button>
+    <button data-tab="panel-movement">Movement</button>
+    <button data-tab="panel-calendar">Calendar Integration</button>
+  </div>
+
+  <!-- Heart Rate -->
+  <div class="tab-panel active" id="panel-hr">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-minimal-dark.png" alt="Smartwatch on wrist showing health data" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h4>Resting Heart Rate</h4>
+          <p>Your baseline heart rate at rest. A key indicator of cardiovascular fitness and overall recovery. Lower values generally indicate better fitness.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-runner-data.png" alt="Runner checking heart rate data on smartwatch" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Average Heart Rate</h4>
+          <p>Mean heart rate across the day, segmented by work hours and rest. Shows overall cardiovascular load during different activities.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/data/data-dashboard-analytics.png" alt="Health analytics dashboard showing real-time data" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14l2 2 4-4"/></svg>
+          </div>
+          <h4>Heart Rate During Tasks</h4>
+          <p>Real-time heart rate mapped to calendar events. Reveals which meetings and tasks create the most cardiovascular demand.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wellness/wellness-yoga-home.png" alt="Recovery and wellness through mindful practice" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h4>Heart Rate Recovery</h4>
+          <p>How quickly your heart rate returns to baseline after stressful periods. Faster recovery suggests better autonomic regulation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stress -->
+  <div class="tab-panel" id="panel-stress">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-man-checking.png" alt="Professional checking stress data on smartwatch" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h4>Stress Score</h4>
+          <p>Garmin's proprietary stress measurement derived from heart rate variability analysis. Scored 0&ndash;100, with lower values indicating less physiological stress.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-dark-spotlight.png" alt="Focus and intensity visualization" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>High-Stress Minutes</h4>
+          <p>Total daily minutes spent in elevated stress zones. Tracked across work hours to identify peak-stress periods and patterns.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/data/data-reports-screens.png" alt="Activity data reports across multiple screens" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h4>Stress by Activity Type</h4>
+          <p>Average stress levels broken down by meeting type, deep work, breaks, and commute. Shows which work activities drive the most stress.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/health-tech/health-tech-3d-illustration.png" alt="Health technology 3D visualization" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+          </div>
+          <h4>Stress Distribution</h4>
+          <p>Daily stress pattern visualization showing the balance between rest, low, medium, and high stress states throughout the day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body Battery -->
+  <div class="tab-panel" id="panel-bb">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-light-wave-dark.png" alt="Morning energy wave visualization" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><line x1="5" y1="10" x2="5" y2="14"/><line x1="9" y1="10" x2="9" y2="14"/><line x1="13" y1="10" x2="13" y2="14"/></svg>
+          </div>
+          <h4>Morning Charge</h4>
+          <p>Your Body Battery level at the start of the day. Higher morning values indicate better overnight recovery and readiness for the day.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-curves-slate.png" alt="Smooth curves representing energy flow" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><line x1="5" y1="10" x2="5" y2="14"/></svg>
+          </div>
+          <h4>End-of-Day Level</h4>
+          <p>Where your energy reserves stand at the end of the workday. Consistently low values may indicate insufficient recovery or excessive demand.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-heart-rate-tracking.png" alt="Real-time health tracking on smartwatch" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+          </div>
+          <h4>Drain Rate</h4>
+          <p>How quickly your Body Battery depletes during work hours. Linked to meeting density, stress intensity, and activity patterns.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wellness/sleep-rest-recovery.png" alt="Restful sleep and overnight recovery" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7"/></svg>
+          </div>
+          <h4>Recharge Overnight</h4>
+          <p>The amount of energy your body recovers during sleep. Influenced by sleep quality, evening routines, and overall stress load.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sleep -->
+  <div class="tab-panel" id="panel-sleep">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wellness/sleep-rest-recovery.png" alt="Restful sleep environment for quality recovery" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+          <h4>Sleep Score</h4>
+          <p>Garmin's composite sleep quality metric combining duration, stages, and restfulness. A holistic view of how restorative your sleep is.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-light-wave-dark.png" alt="Deep sleep wave patterns" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/></svg>
+          </div>
+          <h4>Deep Sleep</h4>
+          <p>Time spent in deep sleep stages, critical for physical recovery and immune function. Typically 1&ndash;2 hours per night in healthy adults.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wellness/wellness-yoga-home.png" alt="Mindful rest and REM recovery" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h4>REM Sleep</h4>
+          <p>Rapid Eye Movement sleep is essential for cognitive processing, memory consolidation, and emotional regulation.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-dark-spotlight.png" alt="Sleep timing and circadian rhythm" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Sleep Timing</h4>
+          <p>When you fall asleep and wake up. Consistency in sleep timing is linked to better circadian rhythm alignment and daytime performance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HRV -->
+  <div class="tab-panel" id="panel-hrv">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-minimal-dark.png" alt="Smartwatch tracking overnight HRV data" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Overnight HRV</h4>
+          <p>Heart Rate Variability measured during sleep provides the most reliable baseline. Higher HRV generally indicates better autonomic balance and recovery.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/health-tech/health-tech-3d-illustration.png" alt="Health technology HRV trend visualization" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><line x1="2" y1="22" x2="22" y2="2" stroke-dasharray="4 4"/></svg>
+          </div>
+          <h4>HRV Trend</h4>
+          <p>Your HRV trajectory over the measurement period. Declining trends may signal accumulated stress or insufficient recovery.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-curves-slate.png" alt="HRV and workload curve patterns" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>HRV vs. Workload</h4>
+          <p>How your HRV responds to variations in work intensity, meeting load, and recovery time. Reveals your body's capacity to handle demand.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Respiration -->
+  <div class="tab-panel" id="panel-resp">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wellness/wellness-yoga-home.png" alt="Calm breathing and respiration practice" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 1 0-16 0c0 4.5 4 8 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Resting Respiration Rate</h4>
+          <p>Breaths per minute at rest. Normal range is 12&ndash;20 brpm. Elevated resting respiration can indicate stress, illness, or poor recovery.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/backgrounds/bg-light-wave-dark.png" alt="Breathing rhythm wave visualization" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <h4>Respiration During Work</h4>
+          <p>How your breathing rate changes during different work activities. Elevated rates during meetings may indicate cognitive or emotional stress.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-minimal-dark.png" alt="Wearable tracking breathing patterns" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16s0-4 4-4 4 4 8 4 4-4 4-4"/><path d="M2 12s0-4 4-4 4 4 8 4 4-4 4-4"/></svg>
+          </div>
+          <h4>Respiration Patterns</h4>
+          <p>Daily breathing rhythm analysis showing transitions between calm and elevated states, correlated with work schedule and activity type.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Movement -->
+  <div class="tab-panel" id="panel-movement">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-runner-data.png" alt="Runner tracking daily steps and movement" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4v16"/><path d="M17 4v16"/><path d="M19 4H9.5a4.5 4.5 0 0 0 0 9H13"/></svg>
+          </div>
+          <h4>Daily Steps</h4>
+          <p>Total step count as a basic indicator of physical activity and movement throughout the day.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wellness/performance-team-sport.png" alt="Active minutes during team sport activity" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Active Minutes</h4>
+          <p>Minutes of moderate to vigorous physical activity. WHO recommends at least 150 minutes of moderate activity per week.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-smartwatch-outdoor.png" alt="Outdoor activity tracked by smartwatch" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h4>Intensity Minutes</h4>
+          <p>Garmin's measure of time spent at elevated heart rate zones, combining moderate and vigorous activity for a complete picture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar Integration -->
+  <div class="tab-panel" id="panel-calendar">
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/data/data-reports-screens.png" alt="Meeting stress data reports across screens" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h4>Stress per Meeting Type</h4>
+          <p>Average physiological stress levels broken down by meeting category — team calls, client presentations, 1-on-1s, and deep work blocks.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/data/data-dashboard-analytics.png" alt="Energy analytics dashboard for calendar events" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><polyline points="7 10 10 13 15 9"/></svg>
+          </div>
+          <h4>Energy Before &amp; After Tasks</h4>
+          <p>Body Battery delta for each calendar event. Shows which activities drain energy and which ones are neutral or restorative.</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card-image">
+          <img src="Assets/images/wearables/wearable-man-checking.png" alt="Professional reviewing work vs rest patterns" loading="lazy">
+        </div>
+        <div class="metric-card-body">
+          <div class="metric-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <h4>Work vs. Non-Work Patterns</h4>
+          <p>Comparison of health metrics during work hours versus evenings and weekends. Reveals whether you're achieving adequate recovery between workdays.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     HOW DATA IS COLLECTED
+     ═══════════════════════════════════ -->
+<section style="padding: 80px 24px; text-align: center;">
+  <div class="container">
+    <div class="section-header">
+      <h2>How your data is collected</h2>
+    </div>
+    <div style="max-width: 720px; margin: 0 auto 48px; border-radius: 16px; overflow: hidden;">
+      <img src="Assets/images/wearables/wearable-devices-desk.png" alt="Wearable device syncing with phone and laptop" loading="lazy" style="width: 100%; display: block;">
+    </div>
+    <div class="value-grid">
+      <div class="value-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="17" r="1"/><line x1="9" y1="6" x2="15" y2="6"/></svg>
+        <h4>Garmin Wearable</h4>
+        <p>Worn 24/7, captures physiological data passively</p>
+      </div>
+      <div class="value-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <h4>Labfront Platform</h4>
+        <p>Research-grade data collection with automatic sync</p>
+      </div>
+      <div class="value-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <h4>Calendar Export</h4>
+        <p>ICS format links work events to health responses</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     DISCLAIMER
+     ═══════════════════════════════════ -->
+<section style="padding: 0 24px 80px; text-align: center;">
+  <div class="container" style="max-width: 720px;">
+    <p style="font-size: 13px; line-height: 1.7; color: var(--text-tertiary);">Apex Lab provides health intelligence based on wearable sensor data and work calendar analysis. Our reports and dashboards are informational tools and do not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider for medical decisions.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CTA
+     ═══════════════════════════════════ -->
+<section class="cta-section">
+  <img src="Assets/images/cta-bg.jpg" alt="" class="cta-bg" loading="lazy">
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>Discover what your data reveals</h2>
+    <p>Start with a pilot to see how your work patterns connect to your health metrics.</p>
+    <a href="mailto:info@apexlab.nl" class="cta-btn">
+      Get in Touch
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid"><div class="footer-col footer-brand-col"><img src="Assets/logos/Zwart.png" alt="Apex Lab" class="footer-logo-sm"><p class="footer-tagline">Work-health intelligence</p></div>
+      <div class="footer-col">
+        <h4>Apex Lab</h4>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="what-we-measure.html">What We Measure</a>
+        <a href="for-teams.html">For Teams</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-approach.html">Our Approach</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="blog.html">Blog</a>
+        <a href="mailto:info@apexlab.nl">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacyverklaring</a>
+        <a href="terms.html">Algemene Voorwaarden</a>
+        <a href="cookies.html">Cookieverklaring</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>
+        <a href="mailto:info@apexlab.nl"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> info@apexlab.nl</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Apex Lab. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacyverklaring</a>
+        <a href="terms.html">Algemene Voorwaarden</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

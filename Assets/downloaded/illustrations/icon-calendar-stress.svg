@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Calendar + stress overlay icon -->
+  <circle cx="60" cy="60" r="56" fill="rgba(107,125,138,0.08)" stroke="rgba(107,125,138,0.15)" stroke-width="1.5"/>
+  <!-- Calendar -->
+  <rect x="30" y="36" width="44" height="48" rx="4" fill="none" stroke="#6B7D8A" stroke-width="2.5"/>
+  <line x1="30" y1="50" x2="74" y2="50" stroke="#6B7D8A" stroke-width="2"/>
+  <line x1="42" y1="32" x2="42" y2="40" stroke="#6B7D8A" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="62" y1="32" x2="62" y2="40" stroke="#6B7D8A" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Calendar day dots with color coding -->
+  <circle cx="40" cy="60" r="3" fill="#6B8F71"/>
+  <circle cx="52" cy="60" r="3" fill="#6B8F71"/>
+  <circle cx="64" cy="60" r="3" fill="#B8860B"/>
+  <circle cx="40" cy="72" r="3" fill="#A04838"/>
+  <circle cx="52" cy="72" r="3" fill="#6B8F71"/>
+  <circle cx="64" cy="72" r="3" fill="#B8860B"/>
+  <!-- Trend line overlay -->
+  <path d="M78,44 L82,52 L86,48 L90,56" fill="none" stroke="#A04838" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

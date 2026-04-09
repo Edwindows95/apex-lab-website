@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Body Battery icon - brand illustration -->
+  <circle cx="60" cy="60" r="56" fill="rgba(95,138,139,0.08)" stroke="rgba(95,138,139,0.15)" stroke-width="1.5"/>
+  <rect x="38" y="38" width="36" height="44" rx="4" fill="none" stroke="#5F8A8B" stroke-width="2.5"/>
+  <rect x="48" y="34" width="16" height="6" rx="2" fill="none" stroke="#5F8A8B" stroke-width="2"/>
+  <!-- Battery level bars -->
+  <rect x="44" y="68" width="24" height="6" rx="1.5" fill="#6B8F71" opacity="0.9"/>
+  <rect x="44" y="58" width="24" height="6" rx="1.5" fill="#6B8F71" opacity="0.65"/>
+  <rect x="44" y="48" width="24" height="6" rx="1.5" fill="#6B8F71" opacity="0.35"/>
+  <!-- Lightning bolt -->
+  <path d="M78,48 L72,58 L78,58 L72,72" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

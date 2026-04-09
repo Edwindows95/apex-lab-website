@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Sleep & recovery icon -->
+  <circle cx="60" cy="60" r="56" fill="rgba(95,138,139,0.08)" stroke="rgba(95,138,139,0.15)" stroke-width="1.5"/>
+  <!-- Moon -->
+  <path d="M55,35 A22,22 0 1 0 80,70 A18,18 0 1 1 55,35Z" fill="none" stroke="#5F8A8B" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Stars / Zzz -->
+  <text x="78" y="42" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#6B7D8A" opacity="0.7">z</text>
+  <text x="86" y="36" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#6B7D8A" opacity="0.5">z</text>
+  <text x="92" y="30" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#6B7D8A" opacity="0.3">z</text>
+  <!-- Recovery curve -->
+  <path d="M30,88 C42,88 48,75 56,75 C64,75 68,82 76,78 C84,74 88,68 92,68" fill="none" stroke="#6B8F71" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
+  <!-- Heart rate / pulse line pattern -->
+  <path d="M0,100 L200,100 L240,100 L260,40 L280,160 L300,60 L320,140 L340,100 L500,100 L540,100 L560,30 L580,170 L600,50 L620,150 L640,100 L800,100 L840,100 L860,45 L880,155 L900,55 L920,145 L940,100 L1100,100 L1140,100 L1160,35 L1180,165 L1200,45 L1220,155 L1240,100 L1440,100"
+        fill="none" stroke="#6B8F71" stroke-width="2" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

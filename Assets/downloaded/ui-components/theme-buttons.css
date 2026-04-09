@@ -1,0 +1,298 @@
+/* ═══════════════════════════════════
+   APEX LAB — BUTTON & COMPONENT THEMES
+   Based on Design System v2.0
+   ═══════════════════════════════════ */
+
+/* ── Primary Button (Soft Slate) ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #6B7D8A;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 12px rgba(107,125,138,0.2);
+}
+.btn-primary:hover {
+  background: #5A6C79;
+  box-shadow: 0 4px 20px rgba(107,125,138,0.3);
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(107,125,138,0.2);
+}
+.btn-primary svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* ── Secondary Button (Outline) ── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  background: transparent;
+  color: #6B7D8A;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px solid #6B7D8A;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-secondary:hover {
+  background: rgba(107,125,138,0.06);
+  border-color: #5A6C79;
+  color: #5A6C79;
+}
+
+/* ── Ghost Button ── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: transparent;
+  color: #6B7D8A;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover {
+  background: rgba(107,125,138,0.08);
+}
+
+/* ── Success / Recovery Button ── */
+.btn-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #6B8F71;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-success:hover {
+  background: #5A7E60;
+  box-shadow: 0 4px 20px rgba(107,143,113,0.25);
+  transform: translateY(-1px);
+}
+
+/* ── Dark Button (for light sections) ── */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #2E2B27;
+  color: #FAF9F7;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-dark:hover {
+  background: #4A4640;
+  transform: translateY(-1px);
+}
+
+/* ── Small Button Variant ── */
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 13px;
+}
+
+/* ── Large Button Variant ── */
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 16px;
+}
+
+
+/* ═══════════════════════════════════
+   BADGE / PILL COMPONENTS
+   ═══════════════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+.badge-good    { background: rgba(107,143,113,0.12); color: #6B8F71; }
+.badge-warning { background: rgba(184,134,11,0.12);  color: #B8860B; }
+.badge-alert   { background: rgba(160,72,56,0.12);   color: #A04838; }
+.badge-info    { background: rgba(107,125,138,0.12);  color: #6B7D8A; }
+.badge-rest    { background: rgba(95,138,139,0.12);   color: #5F8A8B; }
+.badge-neutral { background: #ECEAE6;                 color: #4A4640; }
+
+
+/* ═══════════════════════════════════
+   CARD COMPONENTS
+   ═══════════════════════════════════ */
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid rgba(74,70,64,0.06);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.card-elevated {
+  background: #FFFFFF;
+  border: 1px solid rgba(74,70,64,0.06);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.card-dark {
+  background: #2E2B27;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 24px;
+  color: #FAF9F7;
+}
+
+/* ── KPI Card ── */
+.kpi-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(74,70,64,0.06);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.kpi-card .kpi-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #7A756C;
+}
+.kpi-card .kpi-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A1915;
+}
+.kpi-card .kpi-trend {
+  font-size: 13px;
+  color: #6B8F71;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+/* ═══════════════════════════════════
+   INPUT / FORM COMPONENTS
+   ═══════════════════════════════════ */
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #F5F4F2;
+  border: 1.5px solid rgba(74,70,64,0.12);
+  border-radius: 10px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  color: #1A1915;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input:focus {
+  border-color: #6B7D8A;
+  box-shadow: 0 0 0 3px rgba(107,125,138,0.15);
+}
+.input::placeholder {
+  color: #A8A29E;
+}
+
+
+/* ═══════════════════════════════════
+   USEFUL GRADIENT BACKGROUNDS (CSS)
+   ═══════════════════════════════════ */
+
+.bg-gradient-slate {
+  background: linear-gradient(135deg, #2E2B27 0%, #4A4640 40%, #6B7D8A 100%);
+}
+.bg-gradient-warm {
+  background: linear-gradient(180deg, #FAF9F7 0%, #F5F4F2 50%, #ECEAE6 100%);
+}
+.bg-gradient-health {
+  background: linear-gradient(90deg,
+    rgba(107,143,113,0.08) 0%,
+    rgba(95,138,139,0.06) 50%,
+    rgba(107,125,138,0.06) 100%
+  );
+}
+.bg-gradient-cta {
+  background: linear-gradient(135deg, #1A1915 0%, #2E2B27 40%, #4A4640 100%);
+}
+.bg-gradient-mesh {
+  background:
+    radial-gradient(at 20% 30%, rgba(107,143,113,0.08) 0%, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(95,138,139,0.06) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(107,125,138,0.04) 0%, transparent 50%),
+    #FAF9F7;
+}
+
+
+/* ═══════════════════════════════════
+   SECTION DIVIDERS
+   ═══════════════════════════════════ */
+
+.divider-subtle {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(74,70,64,0.12), transparent);
+  margin: 48px 0;
+}
+
+.divider-accent {
+  width: 60px;
+  height: 3px;
+  background: #6B7D8A;
+  border-radius: 100px;
+  margin: 24px 0;
+}

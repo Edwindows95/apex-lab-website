@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informed Consent | Apex Lab</title>
+<meta name="description" content="Informed consent for participation in Apex Lab health data collection and analysis.">
+<link rel="canonical" href="https://apexlab.nl/consent.html">
+<link rel="icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .legal-page { padding: 160px 0 120px; background: var(--surface-1); }
+  .legal-page h1 { font-size: 48px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
+  .legal-page .last-updated { font-size: 14px; color: var(--text-quaternary); margin-bottom: 48px; }
+  .legal-page h2 { font-size: 24px; font-weight: 600; margin-top: 48px; margin-bottom: 16px; }
+  .legal-page h3 { font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
+  .legal-page p, .legal-page li { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
+  .legal-page ul { padding-left: 24px; margin-bottom: 16px; }
+  .legal-page a { color: var(--accent); text-decoration: underline; }
+  .legal-content { max-width: 720px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-pill scrolled">
+    <a href="/" class="nav-logo"><img src="Assets/logos/Wit.png" alt="Apex Lab" class="nav-logo-img"></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="what-we-measure.html">What We Measure</a></li>
+      <li><a href="for-teams.html">For Teams</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><span class="sep"></span></li>
+      <li><a href="https://dashboard.apexlab.nl">Login</a></li>
+      <li><a href="mailto:info@apexlab.nl" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="legal-page">
+  <div class="container">
+    <div class="legal-content">
+      <h1>Informed Consent</h1>
+      <p class="last-updated">Last updated: March 2026</p>
+
+      <p>This document explains what your participation in an Apex Lab measurement involves. Please read it carefully before giving your consent.</p>
+
+      <h2>1. Purpose</h2>
+      <p>Apex Lab collects and analyzes physiological data from Garmin wearable devices and work calendar information to provide insights into the relationship between work patterns and health. The goal is to help you understand how your work affects your stress, recovery, sleep, and overall energy.</p>
+
+      <h2>2. What data we collect</h2>
+      <ul>
+        <li>Heart rate (continuous and resting)</li>
+        <li>Stress levels (Garmin stress score)</li>
+        <li>Body Battery (energy levels)</li>
+        <li>Respiration rate</li>
+        <li>Sleep data (duration, stages, quality)</li>
+        <li>Heart Rate Variability (HRV), where available</li>
+        <li>Work calendar events (times, durations, and names only — from ICS export)</li>
+      </ul>
+
+      <h2>3. How data is collected</h2>
+      <p>Physiological data is captured through a Garmin wearable device connected to the Labfront research platform. Data collection is passive and automatic — you simply wear the device as normal. Calendar data is provided by you as an ICS file export.</p>
+
+      <h2>4. How data is used</h2>
+      <ul>
+        <li>To generate your personalized health and performance report</li>
+        <li>To power your interactive dashboard at dashboard.apexlab.nl</li>
+        <li>To identify patterns between work activities and physiological responses</li>
+        <li>If part of a team program: to contribute to anonymized, aggregate team insights (with your consent)</li>
+      </ul>
+
+      <h2>5. Privacy and confidentiality</h2>
+      <p>Your individual data is confidential and will not be shared with your employer, manager, or colleagues. If you are participating through an organization, only anonymized aggregate-level insights are shared — never individual data. For full details, see our <a href="privacy.html">Privacyverklaring</a>.</p>
+
+      <h2>6. Data storage and security</h2>
+      <p>Data is stored securely in a PostgreSQL database hosted in the European Union (Frankfurt, Germany). All data transfers are encrypted using TLS. Access is restricted to authenticated personnel only.</p>
+
+      <h2>7. Your rights</h2>
+      <p>Under the GDPR, you have the right to:</p>
+      <ul>
+        <li>Access your personal data at any time</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of all your data</li>
+        <li>Restrict or object to processing</li>
+        <li>Receive your data in a portable format</li>
+        <li>Withdraw your consent at any time without consequence</li>
+      </ul>
+
+      <h2>8. Voluntary participation</h2>
+      <p>Participation is entirely voluntary. You may withdraw at any time, for any reason, without penalty or consequence. If you withdraw, your data will be deleted upon request.</p>
+
+      <h2>9. This is not medical advice</h2>
+      <p>Apex Lab provides health intelligence based on wearable sensor data and work pattern analysis. Our services are informational and do not constitute medical advice, diagnosis, or treatment. If you have health concerns, consult a qualified healthcare provider.</p>
+
+      <h2>10. Contact</h2>
+      <p>For questions about this consent or your data, contact us at <a href="mailto:info@apexlab.nl">info@apexlab.nl</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid"><div class="footer-col footer-brand-col"><img src="Assets/logos/Zwart.png" alt="Apex Lab" class="footer-logo-sm"><p class="footer-tagline">Work-health intelligence</p></div>
+      <div class="footer-col">
+        <h4>Apex Lab</h4>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="what-we-measure.html">What We Measure</a>
+        <a href="for-teams.html">For Teams</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-approach.html">Our Approach</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="blog.html">Blog</a>
+        <a href="mailto:info@apexlab.nl">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacyverklaring</a>
+        <a href="terms.html">Algemene Voorwaarden</a>
+        <a href="cookies.html">Cookieverklaring</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>
+        <a href="mailto:info@apexlab.nl"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> info@apexlab.nl</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Apex Lab. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacyverklaring</a>
+        <a href="terms.html">Algemene Voorwaarden</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

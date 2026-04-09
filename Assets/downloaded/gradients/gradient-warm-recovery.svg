@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900">
+  <defs>
+    <linearGradient id="warm-recovery" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF9F7"/>
+      <stop offset="50%" stop-color="#F5F4F2"/>
+      <stop offset="100%" stop-color="#ECEAE6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#warm-recovery)"/>
+</svg>

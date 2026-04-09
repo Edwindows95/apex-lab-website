@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works | Apex Lab</title>
+<meta name="description" content="Learn how Apex Lab connects Garmin wearable data with your work calendar to deliver personalized health intelligence.">
+<link rel="canonical" href="https://apexlab.nl/how-it-works.html">
+<link rel="icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     FLOATING PILL NAV
+     ═══════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-pill scrolled">
+    <a href="/" class="nav-logo"><img src="Assets/logos/Wit.png" alt="Apex Lab" class="nav-logo-img"></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="what-we-measure.html">What We Measure</a></li>
+      <li><a href="for-teams.html">For Teams</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><span class="sep"></span></li>
+      <li><a href="https://dashboard.apexlab.nl">Login</a></li>
+      <li><a href="mailto:info@apexlab.nl" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     SECTION 1: HERO (split layout)
+     ═══════════════════════════════════ -->
+<section class="hiw-hero" style="background-image: url('Assets/images/step-calendar.webp');">
+  <div class="hiw-hero-overlay"></div>
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="hiw-hero-content">
+      <div class="hiw-hero-text">
+        <h1>How it works</h1>
+        <p>Wear your Garmin for 2&#8211;4 weeks, connect your work calendar, and get a personalized report on stress, recovery, and performance.</p>
+      </div>
+      <div class="hiw-hero-badges">
+        <div class="hiw-hero-badge">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Track Stress
+        </div>
+        <div class="hiw-hero-badge">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          Measure Recovery
+        </div>
+        <div class="hiw-hero-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+          Map Work Patterns
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SECTION 2: TIMELINE
+     ═══════════════════════════════════ -->
+<section class="hiw-timeline-section" id="timeline">
+  <div class="container">
+    <div class="hiw-section-title">
+      <p class="muted">No more guesswork about your health</p>
+      <h2>Get clarity at every step</h2>
+    </div>
+
+    <div class="hiw-timeline">
+      <div class="hiw-timeline-line"></div>
+
+      <!-- Item 1: Wear your Garmin -->
+      <div class="hiw-timeline-item">
+        <div class="hiw-item-image">
+          <img src="Assets/downloaded/images/smartwatch-wrist.jpg" alt="Smartwatch tracking health data on wrist" loading="lazy">
+          <div class="hiw-image-card">
+            <div class="hiw-image-card-row">
+              <span><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+              <span>Heart rate</span>
+              <span>Continuous</span>
+            </div>
+            <div class="hiw-image-card-row">
+              <span><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+              <span>Stress level</span>
+              <span>24/7</span>
+            </div>
+          </div>
+        </div>
+        <div class="hiw-item-label">
+          <div class="hiw-label">Week 1</div>
+        </div>
+        <div class="hiw-item-text">
+          <h3>Wear your Garmin</h3>
+          <p>Put on a Garmin device and go about your normal routine. Heart rate, stress, Body Battery, sleep, respiration, and HRV are captured continuously via the Labfront research platform.</p>
+          <ul class="hiw-checklist">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 6+ health metrics captured 24/7</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Fully automatic — no manual logging</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Research-grade data via Labfront</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Item 2: Connect your calendar -->
+      <div class="hiw-timeline-item">
+        <div class="hiw-item-image">
+          <img src="Assets/downloaded/images/team-meeting-office.jpg" alt="Team meeting with calendar visible" loading="lazy">
+          <div class="hiw-image-card">
+            <div class="hiw-image-card-row">
+              <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></span>
+              <span>Calendar sync</span>
+              <span>ICS format</span>
+            </div>
+            <div class="hiw-image-card-row">
+              <span><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <span>Stress per task</span>
+              <span>Linked</span>
+            </div>
+          </div>
+        </div>
+        <div class="hiw-item-label">
+          <div class="hiw-label">Week 2</div>
+        </div>
+        <div class="hiw-item-text">
+          <h3>Connect your calendar</h3>
+          <p>Export your work calendar as an ICS file. We map every meeting, task, and routine to your physiological data — revealing which parts of your workday energize you and which ones drain you.</p>
+          <ul class="hiw-checklist">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Stress linked to actual work events</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> See energy changes per meeting</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No calendar account access needed</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Item 3: Get your report -->
+      <div class="hiw-timeline-item">
+        <div class="hiw-item-image">
+          <img src="Assets/downloaded/images/data-analytics-screen.jpg" alt="Analytics dashboard with health report" loading="lazy">
+          <div class="hiw-image-card">
+            <div class="hiw-image-card-row">
+              <span><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+              <span>Personal report</span>
+              <span>Delivered</span>
+            </div>
+            <div class="hiw-image-card-row">
+              <span><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg></span>
+              <span>Interactive dashboard</span>
+              <span>Live</span>
+            </div>
+          </div>
+        </div>
+        <div class="hiw-item-label">
+          <div class="hiw-label">Week 3&#8211;4</div>
+        </div>
+        <div class="hiw-item-text">
+          <h3>Get your personal report</h3>
+          <p>Receive a comprehensive, personalized report with clear visualizations of stress patterns, recovery quality, and actionable recommendations. Access your interactive dashboard anytime.</p>
+          <ul class="hiw-checklist">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Clear visualizations and insights</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Actionable recommendations</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Interactive dashboard access</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SECTION 3: CAROUSEL
+     ═══════════════════════════════════ -->
+<section class="hiw-carousel-section">
+  <div class="container">
+    <div class="hiw-carousel-header">
+      <div>
+        <p class="muted">After your report</p>
+        <h2>We guide you to what you need</h2>
+      </div>
+      <div class="hiw-carousel-nav">
+        <button onclick="document.querySelector('.hiw-carousel-track').scrollBy({left:-324,behavior:'smooth'})" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button onclick="document.querySelector('.hiw-carousel-track').scrollBy({left:324,behavior:'smooth'})" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="hiw-carousel-track">
+      <div class="hiw-carousel-card">
+        <div class="hiw-carousel-card-img"><img src="Assets/images/wearables/wearable-heart-rate-tracking.png" alt="Stress Analysis" loading="lazy"></div>
+        <h4>Stress &amp; Recovery Analysis</h4>
+        <p>Understand how your body handles cognitive and physical load — and how well you recover between demands.</p>
+      </div>
+      <div class="hiw-carousel-card">
+        <div class="hiw-carousel-card-img"><img src="Assets/images/data/data-dashboard-analytics.png" alt="Work Patterns" loading="lazy"></div>
+        <h4>Work Pattern Mapping</h4>
+        <p>See which meetings drain you, which routines restore you, and how your schedule shapes your health.</p>
+      </div>
+      <div class="hiw-carousel-card">
+        <div class="hiw-carousel-card-img"><img src="Assets/images/wellness/sleep-rest-recovery.png" alt="Sleep & Recovery" loading="lazy"></div>
+        <h4>Sleep &amp; Recovery Assessment</h4>
+        <p>Analyze sleep duration, stages, and quality — and discover how they connect to next-day performance.</p>
+      </div>
+      <div class="hiw-carousel-card">
+        <div class="hiw-carousel-card-img"><img src="Assets/images/wearables/wearable-professional-office.png" alt="Performance Sustainability" loading="lazy"></div>
+        <h4>Performance Sustainability</h4>
+        <p>Assess whether your current work pace and recovery pattern are built to last long-term.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;">
+      <a href="mailto:info@apexlab.nl" class="hero-cta">Get in Touch <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SECTION 4: STATS
+     ═══════════════════════════════════ -->
+<section class="hiw-stats-section">
+  <div class="container">
+    <div class="hiw-stats-title">
+      <h2>Participants see results<br><strong>in just 4 weeks</strong></h2>
+    </div>
+    <div class="hiw-stats-grid">
+      <div class="hiw-stat-card">
+        <div class="hiw-stat-number">92<span>%</span></div>
+        <p class="hiw-stat-desc">report better awareness of their stress triggers and recovery patterns</p>
+        <div class="hiw-stat-bar"><div class="hiw-stat-bar-fill" style="width: 92%;"></div></div>
+      </div>
+      <div class="hiw-stat-card">
+        <div class="hiw-stat-number">85<span>%</span></div>
+        <p class="hiw-stat-desc">make meaningful changes to their work schedule or daily routines</p>
+        <div class="hiw-stat-bar"><div class="hiw-stat-bar-fill" style="width: 85%;"></div></div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text-quaternary); margin-top:20px;">Based on participant feedback after initial measurement periods.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SECTION 6: FAQ
+     ═══════════════════════════════════ -->
+<section class="faq-section" style="padding: 100px 0;">
+  <div class="container">
+    <div class="faq-header" style="display:flex;align-items:center;justify-content:space-between;">
+      <h2 style="font-family:var(--font-heading);font-size:44px;font-weight:700;letter-spacing:-1px;">Frequently Asked Questions</h2>
+      <a href="faqs.html" class="faq-more">Read more</a>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-category">How it works</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">
+            How long does the measurement period last?
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><p>A typical measurement period runs 2 to 4 weeks. This gives us enough continuous data to identify meaningful patterns in your stress, recovery, and work-related health responses. Longer tracking periods are available for longitudinal insights.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Do I need to do anything during the measurement?
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><p>No. Once your Garmin and Labfront are set up, data collection is fully automatic. Just wear your watch as you normally would — no manual logging, no apps to check, no extra steps.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            When do I get my report?
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><p>Reports are typically delivered within 1&#8211;2 weeks after the measurement period ends, depending on data quality and scope. You also get access to an interactive dashboard with your results.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-category">Privacy</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">
+            Is my data shared with my employer?
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><p>No. Your individual data is never shared with your employer, manager, or any third party. Reports are delivered directly to you. In team programs, only anonymized and aggregated insights are shared with the organization — never individual results.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Is Apex Lab GDPR compliant?
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes. Apex Lab is fully GDPR compliant. All data processing is based on informed consent, data is stored securely on European servers, and you can request deletion of your data at any time.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CTA SECTION
+     ═══════════════════════════════════ -->
+<section class="cta-section">
+  <img src="Assets/images/10.webp" alt="" class="cta-bg-img" loading="lazy">
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>Ready to understand how work affects your health?</h2>
+    <p>Start with a pilot. No commitment — just data-driven clarity about stress, recovery, and performance.</p>
+    <a href="mailto:info@apexlab.nl" class="cta-btn">
+      Get in Touch
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid"><div class="footer-col footer-brand-col"><img src="Assets/logos/Zwart.png" alt="Apex Lab" class="footer-logo-sm"><p class="footer-tagline">Work-health intelligence</p></div>
+      <div class="footer-col">
+        <h4>Apex Lab</h4>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="what-we-measure.html">What We Measure</a>
+        <a href="for-teams.html">For Teams</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-approach.html">Our Approach</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="blog.html">Blog</a>
+        <a href="mailto:info@apexlab.nl">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacyverklaring</a>
+        <a href="terms.html">Algemene Voorwaarden</a>
+        <a href="cookies.html">Cookieverklaring</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>
+        <a href="mailto:info@apexlab.nl"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> info@apexlab.nl</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Apex Lab. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacyverklaring</a>
+        <a href="terms.html">Algemene Voorwaarden</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+<!-- GSAP SCROLL ANIMATIONS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Timeline items: CSS transition class + ScrollTrigger
+  document.querySelectorAll('.hiw-timeline-item').forEach(item => {
+    item.classList.add('gsap-hidden');
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 85%',
+      onEnter: () => {
+        item.classList.remove('gsap-hidden');
+        item.classList.add('gsap-visible');
+      },
+      onLeaveBack: () => {
+        item.classList.remove('gsap-visible');
+        item.classList.add('gsap-hidden');
+      },
+    });
+  });
+
+  // Hero badges: simple entrance animation
+  document.querySelectorAll('.hiw-hero-badge').forEach((badge, i) => {
+    gsap.from(badge, { opacity: 0, y: 20, duration: 0.6, delay: 0.3 + i * 0.2, ease: 'power2.out' });
+  });
+
+  // Stat cards: CSS transition class + ScrollTrigger
+  document.querySelectorAll('.hiw-stat-card').forEach(card => {
+    card.classList.add('gsap-hidden-up');
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 85%',
+      onEnter: () => {
+        card.classList.remove('gsap-hidden-up');
+        card.classList.add('gsap-visible');
+      },
+    });
+  });
+
+  ScrollTrigger.refresh();
+});
+</script>
+
+</body>
+</html>

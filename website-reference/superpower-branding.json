@@ -1,0 +1,43 @@
+{
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#FC5F2B",
+    "accent": "#2FA86C",
+    "background": "#FFFFFF",
+    "textPrimary": "#18181B",
+    "link": "#2FA86C"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Nb International Pro",
+      "heading": "Nb International Pro"
+    },
+    "fontSizes": {
+      "h1": "70px",
+      "h2": "60px",
+      "body": "20px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "16px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#FC5F2B",
+      "textColor": "#FFFFFF",
+      "borderRadius": "9999px"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#18181B",
+      "borderColor": "#E4E4E7",
+      "borderRadius": "9999px"
+    }
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "high",
+    "targetAudience": "health-conscious individuals"
+  }
+}
