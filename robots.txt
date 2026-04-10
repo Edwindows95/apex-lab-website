@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Exclude backup and internal files
+Disallow: /index-backup.html
+Disallow: /Assets/
+
+Sitemap: https://apexlab.nl/sitemap.xml

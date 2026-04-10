@@ -7,9 +7,8 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "/Users/edwinete/Claude/ApexLab/website/website"
-publishOrigin = "ui"
-base = "/Users/edwinete/Claude/ApexLab/website"
+publish = "/Users/edwinete/Claude/ApexLab/website"
+publishOrigin = "default"
 
 [build.environment]
 
