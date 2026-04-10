@@ -2153,12 +2153,12 @@ h1, h2, h3, h4 {
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 
-/* Individual card — large Oura-style format */
+/* ── Card — exact Oura dimensions ── */
 .carousel-card {
   position: relative;
-  flex: 0 0 380px;
-  height: 520px;
-  border-radius: 24px;
+  flex: 0 0 480px;
+  min-height: 620px;
+  border-radius: 12px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -2167,7 +2167,7 @@ h1, h2, h3, h4 {
   justify-content: flex-end;
   scroll-snap-align: start;
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s ease-in-out;
 }
 
 .carousel-card::before {
@@ -2176,8 +2176,8 @@ h1, h2, h3, h4 {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(26, 25, 21, 0.85) 0%,
-    rgba(26, 25, 21, 0.35) 50%,
+    rgba(26, 25, 21, 0.82) 0%,
+    rgba(26, 25, 21, 0.30) 50%,
     rgba(26, 25, 21, 0.05) 75%,
     transparent 100%
   );
@@ -2189,95 +2189,104 @@ h1, h2, h3, h4 {
   transform: translateY(-4px);
 }
 .carousel-card:hover::before {
-  opacity: 0.95;
+  opacity: 0.92;
 }
 
-/* Category tag — frosted glass pill, top left */
+/* ── Glass pill tag — Oura-exact: transparent glass + light text ── */
 .carousel-tag {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 24px;
+  left: 24px;
   z-index: 3;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 100px;
-  padding: 8px 18px 8px 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 24px;
 }
+
+/* Glass layer — absolute fill behind icon + text */
+.carousel-tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 0;
+}
+
 .carousel-tag img {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) saturate(0);
-  opacity: 0.65;
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(0.92);
+  opacity: 0.85;
 }
 .carousel-tag span {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary, #4A4640);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(247, 241, 232, 0.92);
   letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
-/* + expand button — frosted glass circle, top right */
+/* ── Expand button — Oura-exact: solid warm cream, NOT glass ── */
 .carousel-expand {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 24px;
+  right: 24px;
   z-index: 3;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  color: var(--text-secondary, #4A4640);
+  border: none;
+  background: rgb(247, 241, 232);
+  color: rgb(74, 71, 65);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: background 0.2s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  transition: transform 0.3s ease, background 0.2s ease;
 }
 .carousel-expand:hover {
-  background: rgba(255, 255, 255, 0.92);
-  transform: scale(1.08);
+  background: #fff;
+  transform: scale(1.06);
 }
 /* Rotate + to × when expanded */
 .carousel-card.is-expanded .carousel-expand {
   transform: rotate(45deg);
-  background: rgba(255, 255, 255, 0.92);
 }
 
-/* Bottom content area */
+/* ── Bottom content area ── */
 .carousel-card-bottom {
   position: relative;
   z-index: 2;
-  padding: 0 32px 36px;
+  padding: 0 32px 40px;
 }
 
-/* Headline — shorter, punchier, Oura-style */
+/* Headline — Oura-exact: 40px, weight 300, cream, tight leading */
 .carousel-card h3 {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1.15;
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1.0;
   letter-spacing: -0.5px;
-  color: #FFFFFF;
+  color: rgb(247, 241, 232);
 }
 .carousel-card h3 em {
   font-style: italic;
-  font-weight: 400;
+  font-weight: 300;
 }
 
-/* Expandable description — hidden by default */
+/* ── Expandable description — grows card on open ── */
 .carousel-desc {
   margin: 0;
   max-height: 0;
@@ -2286,18 +2295,18 @@ h1, h2, h3, h4 {
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.3s ease,
-              margin 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: rgba(247, 241, 232, 0.72);
+  transition: max-height 0.5s ease-in-out,
+              opacity 0.3s ease 0.1s,
+              margin 0.5s ease-in-out;
 }
 .carousel-card.is-expanded .carousel-desc {
-  max-height: 160px;
+  max-height: 200px;
   opacity: 1;
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
-/* Arrow nav — centered below cards */
+/* ── Arrow nav — centered below cards ── */
 .carousel-nav {
   display: flex;
   justify-content: center;
@@ -2305,21 +2314,21 @@ h1, h2, h3, h4 {
   margin-top: 40px;
 }
 .carousel-arrow {
-  width: 44px;
+  width: 45px;
   height: 44px;
   border-radius: 50%;
-  border: 1.5px solid var(--border-default, rgba(74,70,64,0.12));
-  background: var(--surface-1, #fff);
+  border: none;
+  background: var(--surface-3, #ECEAE6);
   color: var(--text-primary, #1A1915);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: background 0.2s ease;
 }
 .carousel-arrow:hover {
-  border-color: var(--text-tertiary, #7A756C);
-  background: var(--surface-hover, #F0EFEC);
+  background: var(--text-secondary, #4A4640);
+  color: var(--surface-2, #F5F4F2);
 }
 .carousel-arrow:disabled {
   opacity: 0.35;
@@ -2411,7 +2420,8 @@ h1, h2, h3, h4 {
   }
   .steps-row::before { display: none; }
   .faq-grid { grid-template-columns: 1fr; gap: 16px; }
-  .carousel-card { flex: 0 0 320px; height: 460px; }
+  .carousel-card { flex: 0 0 400px; min-height: 540px; }
+  .carousel-card h3 { font-size: 32px; }
 }
 
 @media (max-width: 768px) {
@@ -2439,15 +2449,17 @@ h1, h2, h3, h4 {
   .steps-row { grid-template-columns: 1fr; gap: 48px; }
   .stats-row { grid-template-columns: 1fr; }
   .included-cards { grid-template-columns: 1fr; }
-  .carousel-card { flex: 0 0 290px; height: 420px; }
-  .carousel-card h3 { font-size: 26px; }
+  .carousel-card { flex: 0 0 340px; min-height: 480px; }
+  .carousel-card h3 { font-size: 28px; }
   .hero-actions { flex-direction: column; gap: 12px; }
   .hero-proof { flex-direction: column; gap: 8px; }
   .testimonial-hero-inner blockquote { font-size: 22px; }
   .science-section { padding: 80px 0 60px; }
   .carousel-wrap { padding-left: 20px; }
-  .carousel-card { flex: 0 0 260px; height: 380px; }
-  .carousel-card h3 { font-size: 22px; }
+  .carousel-card { flex: 0 0 280px; min-height: 420px; }
+  .carousel-card h3 { font-size: 24px; }
+  .carousel-tag { padding: 10px 16px; }
+  .carousel-expand { width: 44px; height: 44px; }
   .carousel-card-bottom { padding: 0 24px 28px; }
   .faq-header { flex-direction: column; gap: 16px; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
