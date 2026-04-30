@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept A — Oura-style Trio Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF9F7;
+    --surface-1: #FFFFFF;
+    --surface-2: #F5F4F2;
+    --surface-3: #ECEAE6;
+    --text-primary: #1A1915;
+    --text-secondary: #4A4640;
+    --text-tertiary: #7A756C;
+    --text-quaternary: #A8A29E;
+    --accent: #6B7D8A;
+    --accent-hover: #5A6C79;
+    --border-subtle: rgba(74,70,64,0.06);
+    --border-default: rgba(74,70,64,0.12);
+    --semantic-good: #6B8F71;
+    --semantic-warning: #B8860B;
+    --semantic-alert: #A04838;
+    --shadow-subtle: 0 2px 12px rgba(0,0,0,0.04);
+    --shadow-medium: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Section */
+  .showcase {
+    padding: 100px 0 120px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Header */
+  .showcase-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .showcase-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .showcase-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .showcase-header h2 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .showcase-header p {
+    font-size: 18px;
+    color: var(--text-tertiary);
+    max-width: 600px;
+    margin: 0 auto 12px;
+    line-height: 1.6;
+  }
+
+  .showcase-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-primary);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .showcase-link:hover { opacity: 0.7; }
+
+  .showcase-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  /* === TRIO CARDS === */
+  .trio-cards {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* Image cards */
+  .trio-card-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 520px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .trio-card-image:hover {
+    transform: translateY(-4px);
+  }
+
+  .trio-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .trio-card-image .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 28px;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    z-index: 2;
+  }
+
+  .card-overlay .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  .card-overlay h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+  }
+
+  .card-overlay .card-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* Center dashboard card */
+  .trio-card-dashboard {
+    background: var(--surface-1);
+    border: 1px solid var(--border-default);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Dashboard nav */
+  .dash-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .dash-nav-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .dash-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface-2);
+    padding: 3px;
+    border-radius: 9999px;
+  }
+
+  .dash-tab {
+    padding: 5px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  .dash-tab.active {
+    background: var(--accent);
+    color: #FFFFFF;
+  }
+
+  .dash-settings {
+    font-size: 12px;
+    color: var(--text-quaternary);
+  }
+
+  /* Dashboard content */
+  .dash-content {
+    padding: 24px;
+    flex: 1;
+  }
+
+  .dash-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+
+  .dash-user-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  .dash-user-date {
+    font-size: 12px;
+    color: var(--text-quaternary);
+  }
+
+  /* Score badges */
+  .dash-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .dash-score {
+    padding: 20px 16px;
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .dash-score.green {
+    background: linear-gradient(135deg, #4a6b4e, #6B8F71);
+    color: #FFFFFF;
+  }
+
+  .dash-score.blue {
+    background: linear-gradient(135deg, #4a5e6b, #6B7D8A);
+    color: #FFFFFF;
+  }
+
+  .dash-score-label {
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .dash-score-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .dash-score-sub {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  /* Metrics */
+  .dash-metrics-header {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .dash-metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 13px;
+  }
+
+  .dash-metric-row:last-child { border-bottom: none; }
+
+  .dash-metric-name { color: var(--text-secondary); flex: 1; }
+
+  .dash-metric-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 90px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-dot.green { background: var(--semantic-good); }
+  .status-dot.yellow { background: var(--semantic-warning); }
+
+  .status-text-green { font-size: 12px; color: var(--semantic-good); }
+  .status-text-yellow { font-size: 12px; color: var(--semantic-warning); }
+
+  .dash-metric-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 55px;
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .trio-cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .trio-card-image { min-height: 320px; }
+    .showcase-header h2 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="showcase" id="platform">
+  <div class="container">
+    <div class="showcase-header">
+      <div class="showcase-label">The Platform</div>
+      <h2>Your health data,<br><em>decoded</em></h2>
+      <p>From heart rate to Body Battery, our platform connects your Garmin health metrics with your work calendar to reveal patterns you can't feel.</p>
+      <a href="https://dashboard.apexlab.nl" class="showcase-link">
+        Explore the dashboard
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <!-- TRIO CARDS -->
+    <div class="trio-cards">
+
+      <!-- Left: Lifestyle image -->
+      <div class="trio-card-image">
+        <img src="../images/personen/duo-poseren-buiten.png" alt="Two people outdoors">
+        <div class="card-overlay">
+          <span class="card-tag">For professionals</span>
+          <h3>Understand how your body responds to work</h3>
+          <div class="card-sub">Connect physiology to your daily schedule</div>
+        </div>
+      </div>
+
+      <!-- Center: Dashboard -->
+      <div class="trio-card-dashboard">
+        <div class="dash-nav">
+          <span class="dash-nav-brand">Apex Lab</span>
+          <div class="dash-tabs">
+            <span class="dash-tab">Home</span>
+            <span class="dash-tab active">Data</span>
+            <span class="dash-tab">Calendar</span>
+            <span class="dash-tab">Report</span>
+          </div>
+          <span class="dash-settings">Settings</span>
+        </div>
+        <div class="dash-content">
+          <div class="dash-user">
+            <span class="dash-user-name">Participant Overview</span>
+            <span class="dash-user-date">Last synced: Mar 22, 2026</span>
+          </div>
+          <div class="dash-scores">
+            <div class="dash-score green">
+              <div class="dash-score-label">Body Battery</div>
+              <div class="dash-score-value">72</div>
+              <div class="dash-score-sub">Good — above average</div>
+            </div>
+            <div class="dash-score blue">
+              <div class="dash-score-label">Stress Index</div>
+              <div class="dash-score-value">38</div>
+              <div class="dash-score-sub">Low — well recovered</div>
+            </div>
+          </div>
+          <div class="dash-metrics-header">Health Metrics</div>
+          <div class="dash-metric-row">
+            <span class="dash-metric-name">Resting Heart Rate</span>
+            <div class="dash-metric-status">
+              <span class="status-dot green"></span>
+              <span class="status-text-green">Optimal</span>
+            </div>
+            <span class="dash-metric-val">58 bpm</span>
+          </div>
+          <div class="dash-metric-row">
+            <span class="dash-metric-name">Average Stress (workday)</span>
+            <div class="dash-metric-status">
+              <span class="status-dot yellow"></span>
+              <span class="status-text-yellow">Moderate</span>
+            </div>
+            <span class="dash-metric-val">42</span>
+          </div>
+          <div class="dash-metric-row">
+            <span class="dash-metric-name">Sleep Score</span>
+            <div class="dash-metric-status">
+              <span class="status-dot green"></span>
+              <span class="status-text-green">Good</span>
+            </div>
+            <span class="dash-metric-val">81</span>
+          </div>
+          <div class="dash-metric-row">
+            <span class="dash-metric-name">Respiration Rate</span>
+            <div class="dash-metric-status">
+              <span class="status-dot green"></span>
+              <span class="status-text-green">Normal</span>
+            </div>
+            <span class="dash-metric-val">14 brpm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Athletic image -->
+      <div class="trio-card-image">
+        <img src="../images/sport/basketbal-dunk.webp" alt="Basketball dunk">
+        <div class="card-overlay">
+          <span class="card-tag">For athletes</span>
+          <h3>Track recovery and peak performance</h3>
+          <div class="card-sub">From training load to sleep quality</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

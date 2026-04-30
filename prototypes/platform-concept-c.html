@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept C — Lifestyle Banner + Floating UI</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF9F7;
+    --surface-1: #FFFFFF;
+    --surface-2: #F5F4F2;
+    --surface-3: #ECEAE6;
+    --text-primary: #1A1915;
+    --text-secondary: #4A4640;
+    --text-tertiary: #7A756C;
+    --text-quaternary: #A8A29E;
+    --accent: #6B7D8A;
+    --accent-hover: #5A6C79;
+    --border-subtle: rgba(74,70,64,0.06);
+    --border-default: rgba(74,70,64,0.12);
+    --semantic-good: #6B8F71;
+    --semantic-warning: #B8860B;
+    --shadow-subtle: 0 2px 12px rgba(0,0,0,0.04);
+    --shadow-medium: 0 4px 24px rgba(0,0,0,0.08);
+    --shadow-heavy: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .showcase {
+    padding: 100px 0 120px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Header */
+  .showcase-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .showcase-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .showcase-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .showcase-header h2 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .showcase-header p {
+    font-size: 18px;
+    color: var(--text-tertiary);
+    max-width: 600px;
+    margin: 0 auto 12px;
+    line-height: 1.6;
+  }
+
+  .showcase-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-primary);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .showcase-link:hover { opacity: 0.7; }
+
+  .showcase-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  /* === BANNER + FLOATING CARDS === */
+  .banner-wrap {
+    position: relative;
+    margin-bottom: 60px;
+  }
+
+  /* The lifestyle banner image */
+  .lifestyle-banner {
+    position: relative;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .lifestyle-banner img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  /* Warm gradient overlay on the banner */
+  .banner-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top,
+      rgba(250,249,247, 0.95) 0%,
+      rgba(250,249,247, 0.6) 40%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Text overlay on the banner */
+  .banner-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 48px 80px;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .banner-text .banner-tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: -0.3px;
+  }
+
+  .banner-text .banner-tagline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* Floating dashboard cards */
+  .floating-cards {
+    display: grid;
+    grid-template-columns: 260px 1fr 260px;
+    gap: 20px;
+    margin-top: -70px;
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Sidebar cards (left & right) */
+  .float-sidebar {
+    background: var(--surface-1);
+    border: 1px solid var(--border-default);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .widget-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .widget-subtitle {
+    font-size: 12px;
+    color: var(--text-quaternary);
+    margin-bottom: 16px;
+  }
+
+  /* Recovery score chart */
+  .widget-chart {
+    height: 100px;
+    margin-bottom: 12px;
+  }
+
+  .widget-chart svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .widget-label {
+    font-size: 11px;
+    color: var(--text-quaternary);
+    padding: 4px 8px;
+    background: var(--surface-2);
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .widget-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 16px 0;
+  }
+
+  .widget-q {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .widget-desc {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* Schedule items */
+  .schedule-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .schedule-time {
+    font-size: 11px;
+    color: var(--text-quaternary);
+    font-variant-numeric: tabular-nums;
+    width: 36px;
+    flex-shrink: 0;
+  }
+
+  .schedule-block {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .schedule-block.green { background: rgba(107,143,113,0.08); }
+  .schedule-block.yellow { background: rgba(184,134,11,0.08); }
+  .schedule-block.red { background: rgba(160,72,56,0.08); }
+
+  .schedule-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .schedule-stress {
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* Main center card */
+  .float-main {
+    background: var(--surface-1);
+    border: 1px solid var(--border-default);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-heavy);
+  }
+
+  .dash-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .dash-nav-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .dash-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface-2);
+    padding: 3px;
+    border-radius: 9999px;
+  }
+
+  .dash-tab {
+    padding: 5px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  .dash-tab.active {
+    background: var(--accent);
+    color: #FFFFFF;
+  }
+
+  .dash-settings {
+    font-size: 12px;
+    color: var(--text-quaternary);
+  }
+
+  .dash-content {
+    padding: 24px;
+  }
+
+  .dash-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+
+  .dash-user-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  .dash-user-date {
+    font-size: 12px;
+    color: var(--text-quaternary);
+  }
+
+  .dash-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .dash-score {
+    padding: 20px 16px;
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .dash-score.green {
+    background: linear-gradient(135deg, #4a6b4e, #6B8F71);
+    color: #FFFFFF;
+  }
+
+  .dash-score.blue {
+    background: linear-gradient(135deg, #4a5e6b, #6B7D8A);
+    color: #FFFFFF;
+  }
+
+  .dash-score-label {
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .dash-score-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .dash-score-sub {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  .dash-metrics-header {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .dash-metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 13px;
+  }
+
+  .dash-metric-row:last-child { border-bottom: none; }
+  .dash-metric-name { color: var(--text-secondary); flex: 1; }
+
+  .dash-metric-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 90px;
+  }
+
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .status-dot.green { background: var(--semantic-good); }
+  .status-dot.yellow { background: var(--semantic-warning); }
+  .status-text-green { font-size: 12px; color: var(--semantic-good); }
+  .status-text-yellow { font-size: 12px; color: var(--semantic-warning); }
+
+  .dash-metric-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 55px;
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .floating-cards {
+      grid-template-columns: 1fr;
+      margin-top: -40px;
+    }
+    .float-sidebar { display: none; }
+    .lifestyle-banner img { height: 280px; }
+    .showcase-header h2 { font-size: 36px; }
+    .banner-text { padding: 0 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="showcase" id="platform">
+  <div class="container">
+    <div class="showcase-header">
+      <div class="showcase-label">The Platform</div>
+      <h2>Your health data,<br><em>decoded</em></h2>
+      <p>From heart rate to Body Battery, our platform connects your Garmin health metrics with your work calendar to reveal patterns you can't feel.</p>
+      <a href="https://dashboard.apexlab.nl" class="showcase-link">
+        Explore the dashboard
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <!-- BANNER + FLOATING CARDS -->
+    <div class="banner-wrap">
+      <div class="lifestyle-banner">
+        <img src="../images/personen/duo-poseren-buiten.png" alt="Two people outdoors">
+        <div class="banner-gradient"></div>
+        <div class="banner-text">
+          <div class="banner-tagline">Where <em>physiology</em> meets your workday</div>
+        </div>
+      </div>
+
+      <!-- Floating dashboard cards -->
+      <div class="floating-cards">
+
+        <!-- Left: Recovery Score -->
+        <div class="float-sidebar">
+          <div class="widget-title">Recovery Score</div>
+          <div class="widget-subtitle">Weekly trend</div>
+          <div class="widget-chart">
+            <svg viewBox="0 0 220 100" preserveAspectRatio="none">
+              <rect x="0" y="0" width="220" height="60" fill="rgba(107,143,113,0.08)" rx="4"/>
+              <text x="4" y="14" font-size="9" fill="#6B8F71" font-family="Inter, sans-serif">Optimal</text>
+              <path d="M0,50 C20,45 40,55 60,40 C80,25 100,50 120,35 C140,20 160,40 180,30 C200,25 220,35 220,30"
+                    stroke="#6B8F71" stroke-width="2" fill="none"/>
+              <circle cx="180" cy="30" r="3" fill="#6B8F71"/>
+            </svg>
+          </div>
+          <span class="widget-label">Last 30 days</span>
+          <hr class="widget-divider">
+          <div class="widget-q">What is your Recovery Score?</div>
+          <p class="widget-desc">A composite metric that weighs sleep quality, overnight HRV, resting heart rate, and Body Battery recharge.</p>
+        </div>
+
+        <!-- Center: Main dashboard -->
+        <div class="float-main">
+          <div class="dash-nav">
+            <span class="dash-nav-brand">Apex Lab</span>
+            <div class="dash-tabs">
+              <span class="dash-tab">Home</span>
+              <span class="dash-tab active">Data</span>
+              <span class="dash-tab">Calendar</span>
+              <span class="dash-tab">Report</span>
+            </div>
+            <span class="dash-settings">Settings</span>
+          </div>
+          <div class="dash-content">
+            <div class="dash-user">
+              <span class="dash-user-name">Participant Overview</span>
+              <span class="dash-user-date">Last synced: Mar 22, 2026</span>
+            </div>
+            <div class="dash-scores">
+              <div class="dash-score green">
+                <div class="dash-score-label">Body Battery</div>
+                <div class="dash-score-value">72</div>
+                <div class="dash-score-sub">Good — above average</div>
+              </div>
+              <div class="dash-score blue">
+                <div class="dash-score-label">Stress Index</div>
+                <div class="dash-score-value">38</div>
+                <div class="dash-score-sub">Low — well recovered</div>
+              </div>
+            </div>
+            <div class="dash-metrics-header">Health Metrics</div>
+            <div class="dash-metric-row">
+              <span class="dash-metric-name">Resting Heart Rate</span>
+              <div class="dash-metric-status">
+                <span class="status-dot green"></span>
+                <span class="status-text-green">Optimal</span>
+              </div>
+              <span class="dash-metric-val">58 bpm</span>
+            </div>
+            <div class="dash-metric-row">
+              <span class="dash-metric-name">Average Stress (workday)</span>
+              <div class="dash-metric-status">
+                <span class="status-dot yellow"></span>
+                <span class="status-text-yellow">Moderate</span>
+              </div>
+              <span class="dash-metric-val">42</span>
+            </div>
+            <div class="dash-metric-row">
+              <span class="dash-metric-name">Sleep Score</span>
+              <div class="dash-metric-status">
+                <span class="status-dot green"></span>
+                <span class="status-text-green">Good</span>
+              </div>
+              <span class="dash-metric-val">81</span>
+            </div>
+            <div class="dash-metric-row">
+              <span class="dash-metric-name">Respiration Rate</span>
+              <div class="dash-metric-status">
+                <span class="status-dot green"></span>
+                <span class="status-text-green">Normal</span>
+              </div>
+              <span class="dash-metric-val">14 brpm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Today's Schedule -->
+        <div class="float-sidebar">
+          <div class="widget-title">Today's Schedule</div>
+          <div class="widget-subtitle">Calendar sync</div>
+          <div class="schedule-items">
+            <div class="schedule-item">
+              <span class="schedule-time">09:00</span>
+              <div class="schedule-block green">
+                <span class="schedule-name">Deep work</span>
+                <span class="schedule-stress">Stress: Low</span>
+              </div>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-time">10:30</span>
+              <div class="schedule-block yellow">
+                <span class="schedule-name">Team standup</span>
+                <span class="schedule-stress">Stress: Moderate</span>
+              </div>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-time">13:00</span>
+              <div class="schedule-block red">
+                <span class="schedule-name">Client presentation</span>
+                <span class="schedule-stress">Stress: Elevated</span>
+              </div>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-time">15:00</span>
+              <div class="schedule-block green">
+                <span class="schedule-name">Recovery break</span>
+                <span class="schedule-stress">Stress: Low</span>
+              </div>
+            </div>
+          </div>
+          <hr class="widget-divider">
+          <div class="widget-q">Calendar-linked insights</div>
+          <p class="widget-desc">See how each meeting and task maps to real-time stress and energy changes.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

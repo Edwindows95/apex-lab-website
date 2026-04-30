@@ -1,0 +1,10 @@
+.DS_Store
+*.bak
+SESSION-NOTES.md
+SPEC.md
+.netlify/
+.wrangler/
+node_modules/
+Assets/downloaded/
+Assets/examples section/
+Assets/dashboard-shots/

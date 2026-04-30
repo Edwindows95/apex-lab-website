@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept D — Oura Product Cards (Exact)</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #FAF9F7;
+    color: #1A1915;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .showcase {
+    padding: 100px 0 120px;
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  .showcase-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .showcase-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B7D8A;
+    margin-bottom: 12px;
+  }
+
+  .showcase-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    margin-bottom: 12px;
+  }
+
+  .showcase-header h2 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .showcase-header p {
+    font-size: 18px;
+    color: #7A756C;
+    max-width: 600px;
+    margin: 0 auto 12px;
+    line-height: 1.6;
+  }
+
+  .showcase-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1A1915;
+    text-decoration: none;
+    border-bottom: 1px solid #1A1915;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .showcase-link:hover { opacity: 0.7; }
+
+  .showcase-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  /* ═══════════════════════════════════
+     OURA-EXACT PRODUCT CARDS
+     Measured from ouraring.com CSS:
+     - height: 90svh
+     - aspect-ratio: fallback
+     - border-radius: 20px
+     - grid gap: 24px (gap-6)
+     - container: max-width 1440px
+     - title: 2.5rem
+     - buttons: rounded-full
+     ═══════════════════════════════════ */
+
+  .product-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 90svh;
+    min-height: 600px;
+    cursor: pointer;
+  }
+
+  /* Image fills entire card */
+  .product-card > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Dashboard visual fills entire card */
+  .product-card .dashboard-fill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #ECEAE6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+  }
+
+  /* Bottom gradient for text legibility */
+  .product-card .card-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top,
+      rgba(0,0,0,0.50) 0%,
+      rgba(0,0,0,0.20) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .product-card .card-gradient-light {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background: linear-gradient(to top,
+      rgba(0,0,0,0.40) 0%,
+      rgba(0,0,0,0.10) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Card bottom content — Oura layout:
+     title + price on left, CTAs on right */
+  .card-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 36px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .card-text h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .card-text .card-price {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+
+  /* CTA buttons — Oura: pill, outline + filled */
+  .card-ctas {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .card-cta {
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .card-cta.outline {
+    background: transparent;
+    color: #FFFFFF;
+    border: 1.5px solid rgba(255,255,255,0.45);
+  }
+
+  .card-cta.outline:hover {
+    border-color: #FFFFFF;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .card-cta.filled {
+    background: #FFFFFF;
+    color: #1A1915;
+    border: 1.5px solid #FFFFFF;
+  }
+
+  .card-cta.filled:hover {
+    background: rgba(255,255,255,0.9);
+  }
+
+  /* ═══════════════════════════════════
+     DASHBOARD MOCKUP (right card)
+     ═══════════════════════════════════ */
+
+  .dashboard-mockup {
+    width: 100%;
+    max-width: 480px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  .mini-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    border-bottom: 1px solid rgba(74,70,64,0.06);
+  }
+
+  .mini-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .mini-tabs {
+    display: flex;
+    gap: 3px;
+    background: #F5F4F2;
+    padding: 3px;
+    border-radius: 9999px;
+  }
+
+  .mini-tab {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    color: #7A756C;
+    font-weight: 500;
+  }
+
+  .mini-tab.active {
+    background: #6B7D8A;
+    color: #fff;
+  }
+
+  .mini-settings {
+    font-size: 11px;
+    color: #A8A29E;
+  }
+
+  .mini-content {
+    padding: 22px;
+  }
+
+  .mini-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px;
+  }
+
+  .mini-user-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+
+  .mini-user-date {
+    font-size: 10px;
+    color: #A8A29E;
+  }
+
+  .mini-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .mini-score {
+    padding: 18px 14px;
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .mini-score.green {
+    background: linear-gradient(135deg, #4a6b4e, #6B8F71);
+  }
+
+  .mini-score.blue {
+    background: linear-gradient(135deg, #4a5e6b, #6B7D8A);
+  }
+
+  .mini-score-label {
+    font-size: 9px;
+    font-weight: 600;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .mini-score-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .mini-score-sub {
+    font-size: 9px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  .mini-metrics-header {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .mini-metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(74,70,64,0.06);
+    font-size: 12px;
+  }
+
+  .mini-metric-row:last-child { border-bottom: none; }
+  .mini-metric-name { color: #4A4640; flex: 1; }
+
+  .mini-metric-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 72px;
+  }
+
+  .mini-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .mini-dot.green { background: #6B8F71; }
+  .mini-dot.yellow { background: #B8860B; }
+
+  .mini-status-green { font-size: 11px; color: #6B8F71; }
+  .mini-status-yellow { font-size: 11px; color: #B8860B; }
+
+  .mini-metric-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .product-cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .product-card {
+      height: 85svh;
+      min-height: 500px;
+    }
+    .showcase-header h2 { font-size: 36px; }
+    .card-text h3 { font-size: 2rem; }
+    .card-bottom { padding: 24px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="showcase" id="platform">
+  <div class="container">
+    <div class="showcase-header">
+      <div class="showcase-label">The Platform</div>
+      <h2>Your health data,<br><em>decoded</em></h2>
+      <p>From heart rate to Body Battery, our platform connects your Garmin health metrics with your work calendar to reveal patterns you can't feel.</p>
+      <a href="https://dashboard.apexlab.nl" class="showcase-link">
+        Explore the dashboard
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <!-- OURA-EXACT PRODUCT CARDS -->
+    <div class="product-cards">
+
+      <!-- LEFT CARD — Lifestyle photo -->
+      <div class="product-card">
+        <img src="../images/personen/duo-poseren-buiten.png" alt="Two professionals outdoors">
+        <div class="card-gradient"></div>
+        <div class="card-bottom">
+          <div class="card-text">
+            <h3>For Professionals</h3>
+            <span class="card-price">Understand how work affects your body</span>
+          </div>
+          <div class="card-ctas">
+            <a href="#" class="card-cta outline">Explore</a>
+            <a href="#" class="card-cta filled">Get started</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT CARD — Dashboard -->
+      <div class="product-card">
+        <div class="dashboard-fill">
+          <div class="dashboard-mockup">
+            <div class="mini-nav">
+              <span class="mini-brand">Apex Lab</span>
+              <div class="mini-tabs">
+                <span class="mini-tab">Home</span>
+                <span class="mini-tab active">Data</span>
+                <span class="mini-tab">Calendar</span>
+                <span class="mini-tab">Report</span>
+              </div>
+              <span class="mini-settings">Settings</span>
+            </div>
+            <div class="mini-content">
+              <div class="mini-user">
+                <span class="mini-user-name">Participant Overview</span>
+                <span class="mini-user-date">Last synced: Mar 22, 2026</span>
+              </div>
+              <div class="mini-scores">
+                <div class="mini-score green">
+                  <div class="mini-score-label">Body Battery</div>
+                  <div class="mini-score-value">72</div>
+                  <div class="mini-score-sub">Good — above average</div>
+                </div>
+                <div class="mini-score blue">
+                  <div class="mini-score-label">Stress Index</div>
+                  <div class="mini-score-value">38</div>
+                  <div class="mini-score-sub">Low — well recovered</div>
+                </div>
+              </div>
+              <div class="mini-metrics-header">Health Metrics</div>
+              <div class="mini-metric-row">
+                <span class="mini-metric-name">Resting Heart Rate</span>
+                <div class="mini-metric-status">
+                  <span class="mini-dot green"></span>
+                  <span class="mini-status-green">Optimal</span>
+                </div>
+                <span class="mini-metric-val">58 bpm</span>
+              </div>
+              <div class="mini-metric-row">
+                <span class="mini-metric-name">Average Stress</span>
+                <div class="mini-metric-status">
+                  <span class="mini-dot yellow"></span>
+                  <span class="mini-status-yellow">Moderate</span>
+                </div>
+                <span class="mini-metric-val">42</span>
+              </div>
+              <div class="mini-metric-row">
+                <span class="mini-metric-name">Sleep Score</span>
+                <div class="mini-metric-status">
+                  <span class="mini-dot green"></span>
+                  <span class="mini-status-green">Good</span>
+                </div>
+                <span class="mini-metric-val">81</span>
+              </div>
+              <div class="mini-metric-row">
+                <span class="mini-metric-name">Respiration Rate</span>
+                <div class="mini-metric-status">
+                  <span class="mini-dot green"></span>
+                  <span class="mini-status-green">Normal</span>
+                </div>
+                <span class="mini-metric-val">14 brpm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-gradient-light"></div>
+        <div class="card-bottom">
+          <div class="card-text">
+            <h3>The Dashboard</h3>
+            <span class="card-price">Your personal health intelligence</span>
+          </div>
+          <div class="card-ctas">
+            <a href="#" class="card-cta outline">Explore</a>
+            <a href="#" class="card-cta filled">Log in</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

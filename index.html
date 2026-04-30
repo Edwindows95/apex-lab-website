@@ -4,42 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apex Lab | Work-Health Intelligence</title>
-<meta name="description" content="Apex Lab connects Garmin wearable data with your work calendar to reveal how your body responds to the demands of your day. Evidence-based insights on stress, recovery, and sustainable performance.">
+<meta name="description" content="Apex Lab connects wearable data with your work calendar to reveal how your body responds to the demands of your day.">
 
-<!-- Open Graph -->
 <meta property="og:title" content="Apex Lab | Work-Health Intelligence">
-<meta property="og:description" content="Continuous Garmin data meets your work calendar. Personalized insights on stress, recovery, and sustainable performance.">
+<meta property="og:description" content="Continuous wearable data meets your work calendar. Personalized insights on stress, recovery, and sustainable performance.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://apexlab.nl">
 <meta property="og:image" content="https://apexlab.nl/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Apex Lab | Work-Health Intelligence">
-<meta name="twitter:description" content="Continuous Garmin data meets your work calendar. Personalized insights on stress, recovery, and sustainable performance.">
 
 <link rel="canonical" href="https://apexlab.nl/">
 <link rel="icon" href="img/favicon.ico">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-<!-- Fonts: Inter (body) + Space Grotesk (headings) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
 
-<!-- JSON-LD Structured Data -->
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Apex Lab",
   "url": "https://apexlab.nl",
-  "description": "Work-health intelligence platform connecting Garmin wearable data with work calendars for evidence-based insights on stress, recovery, and sustainable performance.",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "info@apexlab.nl",
-    "contactType": "customer service"
-  }
+  "description": "Work-health intelligence platform connecting wearable data with work calendars.",
+  "contactPoint": { "@type": "ContactPoint", "email": "info@apexlab.nl", "contactType": "customer service" }
 }
 </script>
 </head>
@@ -50,38 +43,49 @@
      ═══════════════════════════════════ -->
 <nav class="nav">
   <div class="nav-pill">
-    <a href="/" class="nav-logo"><img src="Assets/logos/Wit.png" alt="Apex Lab" class="nav-logo-img"></a>
+    <a href="/" class="nav-logo">
+      <img src="Assets/logos/Wit vol.png?v=2" alt="Apex Lab" class="nav-logo-img nav-logo-img--light">
+      <img src="Assets/logos/Zwart vol.png?v=2" alt="" aria-hidden="true" class="nav-logo-img nav-logo-img--dark">
+    </a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="what-we-measure.html">What We Measure</a></li>
-      <li><a href="for-teams.html">For Teams</a></li>
-      <li><a href="faqs.html">FAQs</a></li>
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#measure">What We Measure</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><span class="sep"></span></li>
       <li><a href="https://dashboard.apexlab.nl">Login</a></li>
-      <li><a href="mailto:info@apexlab.nl" class="nav-cta">Get Started</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <svg class="nav-toggle-open" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+      <svg class="nav-toggle-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
   </div>
 </nav>
 
+<!-- Mobile nav backdrop for bottom-sheet menu -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
 <!-- ═══════════════════════════════════
-     HERO — CINEMATIC
+     1. HERO (preserved)
      ═══════════════════════════════════ -->
 <section class="hero">
   <div class="hero-video-wrap">
-    <video class="hero-video" autoplay muted loop playsinline>
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="Assets/images/hero-poster.jpg">
       <source src="Assets/Trailer%20landing%20page.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-bg"></div>
   <div class="hero-grain"></div>
+
   <div class="hero-content">
-    <div class="hero-eyebrow">Work-Health Intelligence Platform</div>
+    <div class="hero-eyebrow-pill">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      GDPR compliant &amp; privacy-first
+    </div>
     <h1>Understand how work<br>affects your <em>body</em></h1>
     <p class="hero-sub">
-      Continuous Garmin data meets your work calendar. Personalized insights on stress, recovery, and sustainable performance.
+      Continuous wearable data meets your work calendar. Personalized insights on stress, recovery, and sustainable performance.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="hero-cta">
@@ -93,439 +97,733 @@
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
     </div>
-    <div class="hero-proof">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        GDPR compliant
-      </div>
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Privacy-first
-      </div>
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        24/7 monitoring
-      </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-title">Continuous monitoring</div>
+      <div class="hero-stat-sub">24/7 wearable health data</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-title">Calendar-linked</div>
+      <div class="hero-stat-sub">Every meeting mapped</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-title">Privacy-first</div>
+      <div class="hero-stat-sub">GDPR compliant</div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     VALUE PROPS — MINIMAL BAR
+     2. COMPATIBILITY STRIP
      ═══════════════════════════════════ -->
-<section class="value-bar">
+<section class="compat-bar">
   <div class="container">
-    <div class="value-grid">
-      <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div>
-          <h4>Continuous monitoring</h4>
-          <p>24/7 Garmin health data — heart rate, stress, sleep, Body Battery</p>
-        </div>
-      </div>
-      <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <div>
-          <h4>Calendar-linked</h4>
-          <p>See exactly which meetings drain you and which routines restore</p>
-        </div>
-      </div>
-      <div class="value-item">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div>
-          <h4>Personal reports</h4>
-          <p>Actionable, evidence-based insights tailored to your work life</p>
-        </div>
-      </div>
+    <div class="compat-label">Works with your wearable</div>
+    <div class="compat-logos">
+      <div class="compat-logo"><img src="Assets/logos/brands/garmin.png?v=2" alt="Garmin" loading="lazy"></div>
+      <div class="compat-logo"><img src="Assets/logos/brands/whoop.png?v=2" alt="WHOOP" loading="lazy"></div>
+      <div class="compat-logo"><img src="Assets/logos/brands/oura.png?v=2" alt="Oura" loading="lazy"></div>
+      <div class="compat-logo"><img src="Assets/logos/brands/polar.svg" alt="Polar" loading="lazy"></div>
+      <div class="compat-logo compat-logo-text"><span>fitbit</span></div>
+      <div class="compat-logo compat-logo-text"><span>Labfront</span></div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     PRODUCT SHOWCASE
+     3. PLATFORM — 3D scroll-tilt reveal (21st.dev pattern, vanilla adapt)
      ═══════════════════════════════════ -->
-<section class="showcase reveal" id="platform">
-  <div class="container">
-    <div class="showcase-header">
-      <div class="showcase-label">The Platform</div>
-      <h2>Your health data,<br><em>decoded</em></h2>
-      <p>From heart rate to Body Battery, our platform connects your Garmin health metrics with your work calendar to reveal patterns you can't feel.</p>
-      <a href="https://dashboard.apexlab.nl" class="showcase-link">
-        Explore the dashboard
-        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-    </div>
+<section class="platform reveal" id="platform">
+  <div class="platform-ambient" aria-hidden="true"></div>
 
-    <div class="dashboard-wrap showcase-animated">
-      <div class="dashboard-glow"></div>
+  <div class="platform-scroll-container">
+    <div class="platform-grid">
 
-      <!-- Left sidebar widget -->
-      <div class="dash-sidebar-widget dash-widget-left">
-        <div class="widget-title">Recovery Score</div>
-        <div class="widget-subtitle">Weekly trend</div>
-        <div class="widget-tabs">
-          <span class="widget-tab active">Trend view</span>
-          <span class="widget-tab">Score Card</span>
-        </div>
-        <div class="widget-chart">
-          <svg viewBox="0 0 220 100" preserveAspectRatio="none">
-            <rect x="0" y="0" width="220" height="60" fill="rgba(107,143,113,0.08)" rx="4"/>
-            <text x="4" y="14" font-size="9" fill="#6B8F71" font-family="Inter, sans-serif">Optimal</text>
-            <path d="M0,50 C20,45 40,55 60,40 C80,25 100,50 120,35 C140,20 160,40 180,30 C200,25 220,35 220,30"
-                  stroke="#6B8F71" stroke-width="2" fill="none"/>
-            <circle cx="180" cy="30" r="3" fill="#6B8F71"/>
+      <!-- LEFT: narrative -->
+      <div class="platform-text">
+        <div class="platform-eyebrow">The Platform</div>
+        <h2 class="platform-heading">Your dashboard,<br>at a <em>glance</em></h2>
+        <p class="platform-lead">
+          Every metric your wearable captures, mapped to every meeting in your calendar — so you can see which parts of your day drain you, and which restore you.
+        </p>
+        <ul class="platform-bullets">
+          <li><span class="bullet-dot" style="background:#6B8F71"></span>Live Body Battery, stress, and sleep</li>
+          <li><span class="bullet-dot" style="background:#A04838"></span>Every meeting color-coded by physiological cost</li>
+          <li><span class="bullet-dot" style="background:#B8860B"></span>Personalized insight, not generic advice</li>
+        </ul>
+        <a href="https://dashboard.apexlab.nl" class="platform-link">
+          Explore the dashboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/>
+            <polyline points="7 7 17 7 17 17"/>
           </svg>
-        </div>
-        <span class="widget-label">Last 30 days</span>
-
-        <hr class="widget-divider">
-
-        <div class="widget-q">What is your Recovery Score?</div>
-        <p class="widget-desc">A composite metric that weighs sleep quality, overnight HRV, resting heart rate, and Body Battery recharge to show how ready your body is for the day ahead.</p>
-      </div>
-
-      <!-- Main dashboard -->
-      <div class="dash-main">
-        <div class="dash-nav">
-          <span class="dash-nav-brand"><img src="Assets/logos/Zwart%20vol.png" alt="The Apex Lab" class="dash-logo-img"></span>
-          <div class="dash-tabs">
-            <span class="dash-tab">Home</span>
-            <span class="dash-tab active">Data</span>
-            <span class="dash-tab">Calendar</span>
-            <span class="dash-tab">Report</span>
-          </div>
-          <span style="font-size:13px;color:var(--text-quaternary);">Settings</span>
-        </div>
-        <div class="dash-content">
-          <div class="dash-user">
-            <span class="dash-user-name">Participant Overview</span>
-            <span class="dash-user-date">Last synced: Mar 22, 2026</span>
-          </div>
-          <div class="dash-scores">
-            <div class="dash-score green">
-              <div class="dash-score-label">body battery</div>
-              <div class="dash-score-value">72</div>
-              <div class="dash-score-sub">Good — above average</div>
-            </div>
-            <div class="dash-score blue">
-              <div class="dash-score-label">stress index</div>
-              <div class="dash-score-value">38</div>
-              <div class="dash-score-sub">Low — well recovered</div>
-            </div>
-          </div>
-          <div class="dash-metrics-header">Health Metrics</div>
-          <div class="dash-metric-row">
-            <span class="dash-metric-name">Resting Heart Rate</span>
-            <div class="dash-metric-status">
-              <span class="status-dot green"></span>
-              <span style="font-size:13px;color:var(--semantic-good);">Optimal</span>
-            </div>
-            <span class="dash-metric-val">58 bpm</span>
-          </div>
-          <div class="dash-metric-row">
-            <span class="dash-metric-name">Average Stress (workday)</span>
-            <div class="dash-metric-status">
-              <span class="status-dot yellow"></span>
-              <span style="font-size:13px;color:var(--semantic-warning);">Moderate</span>
-            </div>
-            <span class="dash-metric-val">42</span>
-          </div>
-          <div class="dash-metric-row">
-            <span class="dash-metric-name">Sleep Score</span>
-            <div class="dash-metric-status">
-              <span class="status-dot green"></span>
-              <span style="font-size:13px;color:var(--semantic-good);">Good</span>
-            </div>
-            <span class="dash-metric-val">81</span>
-          </div>
-          <div class="dash-metric-row">
-            <span class="dash-metric-name">Respiration Rate</span>
-            <div class="dash-metric-status">
-              <span class="status-dot green"></span>
-              <span style="font-size:13px;color:var(--semantic-good);">Normal</span>
-            </div>
-            <span class="dash-metric-val">14 brpm</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right sidebar widget -->
-      <div class="dash-sidebar-widget dash-widget-right">
-        <div class="widget-title">Today's Schedule</div>
-        <div class="widget-subtitle">Calendar sync</div>
-        <div class="schedule-items">
-          <div class="schedule-item">
-            <span class="schedule-time">09:00</span>
-            <div class="schedule-block green">
-              <span class="schedule-name">Deep work</span>
-              <span class="schedule-stress">Stress: Low</span>
-            </div>
-          </div>
-          <div class="schedule-item">
-            <span class="schedule-time">10:30</span>
-            <div class="schedule-block yellow">
-              <span class="schedule-name">Team standup</span>
-              <span class="schedule-stress">Stress: Moderate</span>
-            </div>
-          </div>
-          <div class="schedule-item">
-            <span class="schedule-time">13:00</span>
-            <div class="schedule-block red">
-              <span class="schedule-name">Client presentation</span>
-              <span class="schedule-stress">Stress: Elevated</span>
-            </div>
-          </div>
-          <div class="schedule-item">
-            <span class="schedule-time">15:00</span>
-            <div class="schedule-block green">
-              <span class="schedule-name">Recovery break</span>
-              <span class="schedule-stress">Stress: Low</span>
-            </div>
-          </div>
-        </div>
-        <hr class="widget-divider">
-        <div class="widget-q">Calendar-linked insights</div>
-        <p class="widget-desc">See how each meeting and task in your workday maps to real-time stress and energy changes.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     OUR APPROACH — CINEMATIC QUOTE
-     ═══════════════════════════════════ -->
-<section class="quote-section reveal">
-  <div class="container">
-    <div class="quote-label">Our approach</div>
-    <blockquote>
-      The most powerful health insights come from connecting what you <em>do</em> at work with how your body actually <em>responds</em>.
-    </blockquote>
-    <p class="quote-sub">Objectively. Continuously. Without guesswork.</p>
-
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-number">24/7</div>
-        <div class="stat-desc"><strong>Continuous health monitoring</strong> via Garmin wearables — heart rate, stress, sleep, Body Battery, and more</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">6<span>+</span></div>
-        <div class="stat-desc"><strong>Core health metrics</strong> analyzed per participant per day, linked to work activities and calendar events</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">100<span>%</span></div>
-        <div class="stat-desc"><strong>Privacy-first</strong> and fully GDPR compliant — individual data stays with the participant, always</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     THE SCIENCE — CAROUSEL CARDS (Oura-style)
-     ═══════════════════════════════════ -->
-<section class="science-section reveal" id="science">
-  <div class="container">
-    <div class="section-header section-header-center">
-      <div class="showcase-label">What sets us apart</div>
-      <h2>Built on real physiology,<br>not <em>assumptions</em></h2>
-      <p>Apex Lab combines six dimensions of health data to give you a complete picture of how work impacts your body.</p>
-    </div>
-  </div>
-
-  <div class="carousel-wrap">
-    <div class="carousel-track" id="scienceCarousel">
-      <div class="carousel-card" style="background-image: url('Assets/images/wellness/health-heart-care.png');">
-        <div class="carousel-tag">
-          <img src="Assets/downloaded/illustrations/icon-heart-pulse.svg" alt="" loading="lazy">
-          <span>Stress & recovery</span>
-        </div>
-        <button class="carousel-expand" aria-label="Read more about Stress & Recovery">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="carousel-card-bottom">
-          <h3>Understand how your body handles <em>stress</em></h3>
-          <p class="carousel-desc">Continuous heart rate and stress data reveal how your body handles load throughout the workday — and whether it truly recovers.</p>
-        </div>
-      </div>
-
-      <div class="carousel-card" style="background-image: url('Assets/images/wearables/wearable-heart-rate-tracking.png');">
-        <div class="carousel-tag">
-          <img src="Assets/downloaded/illustrations/icon-body-battery.svg" alt="" loading="lazy">
-          <span>Body Battery</span>
-        </div>
-        <button class="carousel-expand" aria-label="Read more about Body Battery">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="carousel-card-bottom">
-          <h3>Track your energy throughout the <em>day</em></h3>
-          <p class="carousel-desc">See exactly when your battery drains, what charges it, and how to optimize your daily rhythm for sustainable performance.</p>
-        </div>
-      </div>
-
-      <div class="carousel-card" style="background-image: url('Assets/downloaded/images/team-meeting-office.jpg');">
-        <div class="carousel-tag">
-          <img src="Assets/downloaded/illustrations/icon-calendar-stress.svg" alt="" loading="lazy">
-          <span>Calendar intelligence</span>
-        </div>
-        <button class="carousel-expand" aria-label="Read more about Calendar Intelligence">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="carousel-card-bottom">
-          <h3>See which meetings cost you — <em>objectively</em></h3>
-          <p class="carousel-desc">Your work schedule mapped to physiological responses. The first system that measures the real impact of every meeting and task.</p>
-        </div>
-      </div>
-
-      <div class="carousel-card" style="background-image: url('Assets/images/wellness/sleep-rest-recovery.png');">
-        <div class="carousel-tag">
-          <img src="Assets/downloaded/illustrations/icon-sleep-recovery.svg" alt="" loading="lazy">
-          <span>Sleep architecture</span>
-        </div>
-        <button class="carousel-expand" aria-label="Read more about Sleep Architecture">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="carousel-card-bottom">
-          <h3>How your workday shapes your <em>nights</em></h3>
-          <p class="carousel-desc">Deep sleep, REM cycles, overnight HRV — understand the connection between what happens during work and the quality of your recovery.</p>
-        </div>
-      </div>
-
-      <div class="carousel-card" style="background-image: url('Assets/downloaded/images/abstract-data-lines.jpg');">
-        <div class="carousel-tag">
-          <img src="Assets/downloaded/illustrations/icon-dashboard-analytics.svg" alt="" loading="lazy">
-          <span>Trend analysis</span>
-        </div>
-        <button class="carousel-expand" aria-label="Read more about Trend Analysis">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="carousel-card-bottom">
-          <h3>Spot burnout signals before they <em>escalate</em></h3>
-          <p class="carousel-desc">Weekly and monthly patterns emerge over time. Validate whether changes to your routine are actually working — with real data.</p>
-        </div>
-      </div>
-
-      <div class="carousel-card" style="background-image: url('Assets/downloaded/images/wellness-nature-calm.jpg');">
-        <div class="carousel-tag">
-          <img src="Assets/downloaded/illustrations/icon-shield-privacy.svg" alt="" loading="lazy">
-          <span>Privacy by design</span>
-        </div>
-        <button class="carousel-expand" aria-label="Read more about Privacy by Design">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="carousel-card-bottom">
-          <h3>Your data belongs to <em>you</em></h3>
-          <p class="carousel-desc">GDPR compliant from the ground up, with individual control over every data point. No one sees your data without your consent.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="carousel-nav">
-      <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 15l5-5-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     HOW IT WORKS
-     ═══════════════════════════════════ -->
-<section class="how-section reveal" id="how-it-works">
-  <div class="container">
-    <div class="section-header">
-      <div class="showcase-label">Three steps</div>
-      <h2>How it works</h2>
-    </div>
-
-    <div class="steps-row">
-      <div class="step-card">
-        <div class="step-img">
-          <img src="Assets/images/step-wear.webp" alt="Smartwatch on wrist tracking health data" loading="lazy">
-        </div>
-        <span class="step-number">1</span>
-        <h3>Wear your Garmin</h3>
-        <p>Participants wear a Garmin device 24/7, continuously capturing heart rate, stress, Body Battery, sleep, and respiration data via Labfront.</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-img">
-          <img src="Assets/images/step-calendar.webp" alt="Work calendar on desk" loading="lazy">
-        </div>
-        <span class="step-number">2</span>
-        <h3>Connect your calendar</h3>
-        <p>Export your work calendar as ICS. We link every meeting, task, and routine to your physiological data — so you see how work affects your body.</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-img">
-          <img src="Assets/images/step-report.webp" alt="Analytics dashboard with health data" loading="lazy">
-        </div>
-        <span class="step-number">3</span>
-        <h3>Get your personal report</h3>
-        <p>Receive a clear, personalized report with insights on stress, recovery, and actionable recommendations for sustainable performance.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     WHAT'S INCLUDED
-     ═══════════════════════════════════ -->
-<section class="included-section reveal" id="services">
-  <div class="container">
-    <div class="included-layout">
-      <div class="included-text">
-        <div class="showcase-label">Your analysis</div>
-        <h2>More than a wearable report</h2>
-        <p>Access an evidence-based health intelligence system designed for the demands of modern work. Every insight is grounded in your data.</p>
-        <a href="#contact" class="included-cta">
-          Get Started
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
-      <div class="included-cards">
-        <div class="inc-card inc-card-photo">
-          <img src="Assets/images/wearables/wearable-heart-rate-tracking.png" alt="" class="inc-card-bg" loading="lazy">
-          <div class="inc-card-overlay"></div>
-          <div class="inc-card-body">
-            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            <h4>Stress & Recovery Analysis</h4>
-            <p>How your body handles load and bounces back.</p>
+
+      <!-- RIGHT: 3D-tilting dashboard card -->
+      <div class="platform-card-wrap"><div class="platform-card">
+        <div class="platform-card-inner">
+
+          <div class="canvas-header">
+            <img src="Assets/logos/Zwart vol.png?v=2" alt="Apex Lab" class="canvas-brand">
+
+            <div class="canvas-live">
+              <span class="canvas-live-dot"></span>
+              Live · Monday
+            </div>
+          </div>
+
+          <div class="canvas-rings">
+            <div class="canvas-ring" style="--arc-color:#6B8F71; --arc-offset:75;">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring-track" cx="50" cy="50" r="44"/>
+                <circle class="ring-arc" cx="50" cy="50" r="44" transform="rotate(-90 50 50)"/>
+              </svg>
+              <div class="ring-center">
+                <div class="ring-value">73</div>
+                <div class="ring-unit">%</div>
+              </div>
+              <div class="ring-label">Body Battery</div>
+            </div>
+
+            <div class="canvas-ring" style="--arc-color:#A04838; --arc-offset:188;">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring-track" cx="50" cy="50" r="44"/>
+                <circle class="ring-arc" cx="50" cy="50" r="44" transform="rotate(-90 50 50)"/>
+              </svg>
+              <div class="ring-center">
+                <div class="ring-value">32</div>
+                <div class="ring-unit">%</div>
+              </div>
+              <div class="ring-label">Stress Index</div>
+            </div>
+
+            <div class="canvas-ring" style="--arc-color:#8B7355; --arc-offset:52;">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring-track" cx="50" cy="50" r="44"/>
+                <circle class="ring-arc" cx="50" cy="50" r="44" transform="rotate(-90 50 50)"/>
+              </svg>
+              <div class="ring-center">
+                <div class="ring-value">81</div>
+                <div class="ring-unit">%</div>
+              </div>
+              <div class="ring-label">Sleep Score</div>
+            </div>
+          </div>
+
+          <div class="canvas-trend">
+            <div class="trend-header">
+              <span class="trend-label">Body Battery — last 7 days</span>
+              <span class="trend-delta">+12%</span>
+            </div>
+            <svg class="trend-svg" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#6B8F71" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#6B8F71" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="trend-area" pathLength="1" d="M0,55 C40,50 70,65 110,45 C150,26 190,50 230,35 C270,20 310,30 350,24 L400,18 L400,80 L0,80 Z"/>
+              <path class="trend-path" pathLength="1" d="M0,55 C40,50 70,65 110,45 C150,26 190,50 230,35 C270,20 310,30 350,24 L400,18"/>
+            </svg>
+          </div>
+
+          <div class="canvas-bars">
+            <div class="canvas-bar">
+              <span class="bar-time">09:00</span>
+              <div class="bar-body" style="--bar-color:#6B8F71;">
+                <div class="bar-fill" style="width:24%"></div>
+                <div class="bar-content">
+                  <span class="bar-task">Deep Work</span>
+                  <span class="bar-stress">Low</span>
+                </div>
+              </div>
+            </div>
+            <div class="canvas-bar">
+              <span class="bar-time">10:30</span>
+              <div class="bar-body" style="--bar-color:#B8860B;">
+                <div class="bar-fill" style="width:48%"></div>
+                <div class="bar-content">
+                  <span class="bar-task">Team Standup</span>
+                  <span class="bar-stress">Moderate</span>
+                </div>
+              </div>
+            </div>
+            <div class="canvas-bar">
+              <span class="bar-time">13:00</span>
+              <div class="bar-body" style="--bar-color:#A04838;">
+                <div class="bar-fill" style="width:82%"></div>
+                <div class="bar-content">
+                  <span class="bar-task">Client Presentation</span>
+                  <span class="bar-stress">Elevated</span>
+                </div>
+              </div>
+            </div>
+            <div class="canvas-bar">
+              <span class="bar-time">15:00</span>
+              <div class="bar-body" style="--bar-color:#6B8F71;">
+                <div class="bar-fill" style="width:18%"></div>
+                <div class="bar-content">
+                  <span class="bar-task">Recovery Break</span>
+                  <span class="bar-stress">Low</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-insight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+            <span><strong>Best deep-work window today:</strong> 09:00 – 11:00 · Body Battery is 18% above your 30-day baseline.</span>
+          </div>
+
+        </div>
+      </div>
+
+      </div><!-- /.platform-card-wrap -->
+
+    </div><!-- /.platform-grid -->
+  </div><!-- /.platform-scroll-container -->
+
+  <div class="platform-hairline" aria-hidden="true"></div>
+</section>
+
+<!-- ═══════════════════════════════════
+     3.5 PINNED SCROLL — Beat-by-beat full-bleed
+     ═══════════════════════════════════ -->
+<!-- HIDDEN: wrapped in <div hidden> to test gallery-only layout. Remove the div tags to restore. -->
+<div hidden id="pinned-scroll-hidden">
+<section class="pin-section" id="inside-apex">
+  <div class="pin-track" data-beats="3">
+    <div class="pin-stage">
+
+      <!-- Crossfading full-bleed backgrounds -->
+      <div class="pin-bg" aria-hidden="true">
+        <div class="pin-bg-img is-active" data-beat="0" style="background-image:url('Assets/images/sections/rhythm.png')"></div>
+        <div class="pin-bg-img"            data-beat="1" style="background-image:url('Assets/images/sections/work.png')"></div>
+        <div class="pin-bg-img"            data-beat="2" style="background-image:url('Assets/images/sections/recovery.png')"></div>
+        <div class="pin-bg-overlay"></div>
+      </div>
+
+      <!-- Left: per-beat slide stack. Each slide owns its own headline, body,
+           and accordion so content never overlaps and each image has its own
+           tailored set of SEO-friendly questions. -->
+      <div class="pin-left">
+        <!-- BEAT 0 — Daily rhythm (rhythm.png) -->
+        <div class="pin-slide is-active" data-beat="0">
+          <div class="pin-slide-copy">
+            <div class="pin-eyebrow">Inside Apex Lab</div>
+            <h2>The pace of your day,<br><em>measured</em>.</h2>
+            <p>From sprint to stillness &mdash; Apex Lab tracks the rhythm of your workday and how your body handles every shift in demand.</p>
+          </div>
+          <div class="pin-acc">
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>Which parts of my day drain me &mdash; and which restore me?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Apex Lab overlays your calendar onto continuous wearable data, so every meeting, task, and break is tagged with the stress and recovery it actually produced &mdash; no self-reporting or guesswork.</p></div>
+            </div>
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>How do I find my most productive hours with real data?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Your Body Battery trajectory reveals when your energy is naturally highest. After two weeks of wear we can pinpoint your personal high-performance windows &mdash; and the hours you're better off protecting.</p></div>
+            </div>
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>What does a sustainable daily rhythm actually look like?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>A sustainable rhythm is one where daily recharge outpaces daily drain. Apex Lab maps that balance explicitly so you can see whether the current pattern is holding or quietly losing ground.</p></div>
+            </div>
           </div>
         </div>
-        <div class="inc-card inc-card-photo">
-          <img src="Assets/images/data/data-dashboard-analytics.png" alt="" class="inc-card-bg" loading="lazy">
-          <div class="inc-card-overlay"></div>
-          <div class="inc-card-body">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <h4>Work Pattern Mapping</h4>
-            <p>Which meetings drain you, which routines restore.</p>
+
+        <!-- BEAT 1 — Work & focus (work.png) -->
+        <div class="pin-slide" data-beat="1">
+          <div class="pin-slide-copy">
+            <div class="pin-eyebrow">Inside Apex Lab</div>
+            <h2>What you do all day,<br>your body <em>remembers</em>.</h2>
+            <p>Meetings, deep work, and every transition in between &mdash; each leaves a signal in your heart rate, stress, and recovery.</p>
+          </div>
+          <div class="pin-acc">
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>How much does a back-to-back meeting day really cost me?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Apex Lab measures your heart rate, stress, and HRV response against each calendar block. The output: a clear breakdown of which meetings tax you most, and which are neutral &mdash; quantified, not guessed.</p></div>
+            </div>
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>Do long focus blocks hurt my recovery?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Deep work can raise sustained cognitive load without recovery in between. We flag when focus blocks tip into overload, so you can schedule real breaks before your nervous system forces them.</p></div>
+            </div>
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>Can I measure the physiological load of my job?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Yes. The weekly report translates six dimensions of wearable data into a single readable picture of your work's physiological cost &mdash; and what it takes to sustain it.</p></div>
+            </div>
           </div>
         </div>
-        <div class="inc-card inc-card-photo">
-          <img src="Assets/images/wearables/wearable-runner-data.png" alt="" class="inc-card-bg" loading="lazy">
-          <div class="inc-card-overlay"></div>
-          <div class="inc-card-body">
-            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-            <h4>Performance Sustainability</h4>
-            <p>Assess whether your pace is built to last.</p>
+
+        <!-- BEAT 2 — Sleep & recovery (recovery.png) -->
+        <div class="pin-slide" data-beat="2">
+          <div class="pin-slide-copy">
+            <div class="pin-eyebrow">Inside Apex Lab</div>
+            <h2>Recovery is the<br>real <em>performance</em>.</h2>
+            <p>Overnight HRV, deep sleep, and morning resting heart rate tell you whether your body truly recharged &mdash; or carried today's load into tomorrow.</p>
+          </div>
+          <div class="pin-acc">
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>What does overnight HRV actually tell me about recovery?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Overnight HRV is the honest measure of whether your autonomic nervous system recovered. Higher HRV means your body de-escalated the day's stress; lower HRV means today's load carried into tomorrow.</p></div>
+            </div>
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>Why don't I feel rested after eight hours of sleep?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>Sleep quantity is only part of the story. Fragmented deep sleep, reduced REM, or an elevated overnight heart rate mean your body and brain stayed partially "on" all night &mdash; and Apex Lab makes that visible.</p></div>
+            </div>
+            <div class="pin-acc-item">
+              <button type="button" class="pin-acc-q">
+                <span>How long until my real recovery pattern becomes clear?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="pin-acc-a"><p>First meaningful patterns emerge after two weeks of continuous wear. Stable personal baselines settle in around week four &mdash; and from there every week sharpens the signal.</p></div>
+            </div>
           </div>
         </div>
-        <div class="inc-card inc-card-photo">
-          <img src="Assets/images/performance/performance-team-sport.png" alt="" class="inc-card-bg" loading="lazy">
-          <div class="inc-card-overlay"></div>
-          <div class="inc-card-body">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <h4>Team Health Insights</h4>
-            <p>Anonymized, aggregate views for organizations.</p>
+      </div>
+
+      <!-- Right: numbered list / beat nav -->
+      <div class="pin-right">
+        <ol class="pin-nav">
+          <li class="pin-nav-item is-active" data-beat="0">
+            <span class="pin-nav-label">Daily rhythm</span>
+            <span class="pin-nav-num">01</span>
+          </li>
+          <li class="pin-nav-item" data-beat="1">
+            <span class="pin-nav-label">Work &amp; focus</span>
+            <span class="pin-nav-num">02</span>
+          </li>
+          <li class="pin-nav-item" data-beat="2">
+            <span class="pin-nav-label">Sleep &amp; recovery</span>
+            <span class="pin-nav-num">03</span>
+          </li>
+        </ol>
+      </div>
+
+    </div><!-- /.pin-stage -->
+  </div><!-- /.pin-track -->
+</section>
+
+<!-- ═══════════════════════════════════
+     3.5m MOBILE BEAT STACK — replaces pin-section at ≤900px.
+     Visible on mobile only (CSS gated). Desktop hides this.
+     ═══════════════════════════════════ -->
+<section class="beats-mobile" aria-label="Inside Apex Lab">
+  <article class="beat">
+    <div class="beat-bg" style="background-image:url('Assets/images/sections/rhythm.png')" aria-hidden="true"></div>
+    <div class="beat-overlay" aria-hidden="true"></div>
+    <div class="beat-content">
+      <span class="beat-eyebrow">Inside Apex Lab</span>
+      <h2 class="beat-title">The pace of your day, <em>measured</em>.</h2>
+      <p class="beat-lede">From sprint to stillness &mdash; Apex Lab tracks the rhythm of your workday and how your body handles every shift in demand.</p>
+      <details class="beat-q">
+        <summary>Which parts of my day drain me &mdash; and which restore me?</summary>
+        <p>Apex Lab overlays your calendar onto continuous wearable data, so every meeting, task, and break is tagged with the stress and recovery it actually produced &mdash; no self-reporting or guesswork.</p>
+      </details>
+      <details class="beat-q">
+        <summary>How do I find my most productive hours with real data?</summary>
+        <p>Your Body Battery trajectory reveals when your energy is naturally highest. After two weeks of wear we can pinpoint your personal high-performance windows &mdash; and the hours you're better off protecting.</p>
+      </details>
+      <details class="beat-q">
+        <summary>What does a sustainable daily rhythm actually look like?</summary>
+        <p>A sustainable rhythm is one where daily recharge outpaces daily drain. Apex Lab maps that balance explicitly so you can see whether the current pattern is holding or quietly losing ground.</p>
+      </details>
+    </div>
+  </article>
+
+  <article class="beat">
+    <div class="beat-bg" style="background-image:url('Assets/images/sections/work.png')" aria-hidden="true"></div>
+    <div class="beat-overlay" aria-hidden="true"></div>
+    <div class="beat-content">
+      <span class="beat-eyebrow">Work &amp; Focus</span>
+      <h2 class="beat-title">What you do all day, your body <em>remembers</em>.</h2>
+      <p class="beat-lede">Meetings, deep work, and every transition in between &mdash; each leaves a signal in your heart rate, stress, and recovery.</p>
+      <details class="beat-q">
+        <summary>How much does a back-to-back meeting day really cost me?</summary>
+        <p>Apex Lab measures your heart rate, stress, and HRV response against each calendar block. The output: a clear breakdown of which meetings tax you most, and which are neutral &mdash; quantified, not guessed.</p>
+      </details>
+      <details class="beat-q">
+        <summary>Do long focus blocks hurt my recovery?</summary>
+        <p>Deep work can raise sustained cognitive load without recovery in between. We flag when focus blocks tip into overload, so you can schedule real breaks before your nervous system forces them.</p>
+      </details>
+      <details class="beat-q">
+        <summary>Can I measure the physiological load of my job?</summary>
+        <p>Yes. The weekly report translates six dimensions of wearable data into a single readable picture of your work's physiological cost &mdash; and what it takes to sustain it.</p>
+      </details>
+    </div>
+  </article>
+
+  <article class="beat">
+    <div class="beat-bg" style="background-image:url('Assets/images/sections/recovery.png')" aria-hidden="true"></div>
+    <div class="beat-overlay" aria-hidden="true"></div>
+    <div class="beat-content">
+      <span class="beat-eyebrow">Sleep &amp; Recovery</span>
+      <h2 class="beat-title">Recovery is the real <em>performance</em>.</h2>
+      <p class="beat-lede">Overnight HRV, deep sleep, and morning resting heart rate tell you whether your body truly recharged &mdash; or carried today's load into tomorrow.</p>
+      <details class="beat-q">
+        <summary>What does overnight HRV actually tell me about recovery?</summary>
+        <p>Overnight HRV is the honest measure of whether your autonomic nervous system recovered. Higher HRV means your body de-escalated the day's stress; lower HRV means today's load carried into tomorrow.</p>
+      </details>
+      <details class="beat-q">
+        <summary>Why don't I feel rested after eight hours of sleep?</summary>
+        <p>Sleep quantity is only part of the story. Fragmented deep sleep, reduced REM, or an elevated overnight heart rate mean your body and brain stayed partially "on" all night &mdash; and Apex Lab makes that visible.</p>
+      </details>
+      <details class="beat-q">
+        <summary>How long until my real recovery pattern becomes clear?</summary>
+        <p>First meaningful patterns emerge after two weeks of continuous wear. Stable personal baselines settle in around week four &mdash; and from there every week sharpens the signal.</p>
+      </details>
+    </div>
+  </article>
+</section>
+</div><!-- /#pinned-scroll-hidden -->
+
+<!-- ═══════════════════════════════════
+     3.6 GALLERY STRIP — Inside Apex Lab expandable gallery
+     ═══════════════════════════════════ -->
+<section class="gallery-section reveal" id="inside-apex-gallery">
+  <div class="gallery-strip">
+
+    <div class="gallery-item" data-src="Assets/images/sections/rhythm.png">
+      <div class="gallery-img" style="background-image:url('Assets/images/sections/rhythm.png')"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-label">
+        <h3 class="gallery-h3">The pace of your day,<br><em>measured</em>.</h3>
+        <p class="gallery-p">From sprint to stillness — Apex Lab tracks the rhythm of your workday and how your body handles every shift in demand.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-src="Assets/images/sections/work.png">
+      <div class="gallery-img" style="background-image:url('Assets/images/sections/work.png')"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-label">
+        <h3 class="gallery-h3">What you do all day,<br>your body <em>remembers</em>.</h3>
+        <p class="gallery-p">Meetings, deep work, every transition in between — each leaves a measurable signal in your heart rate, stress, and recovery.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-src="Assets/images/sections/recovery.png">
+      <div class="gallery-img" style="background-image:url('Assets/images/sections/recovery.png')"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-label">
+        <h3 class="gallery-h3">Recovery is the<br>real <em>performance</em>.</h3>
+        <p class="gallery-p">Overnight HRV, deep sleep, and morning resting heart rate tell you whether your body truly recharged — or carried today's load into tomorrow.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-src="Assets/images/sections/laptop-start.png">
+      <div class="gallery-img" style="background-image:url('Assets/images/sections/laptop-start.png')"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-label">
+        <h3 class="gallery-h3">How you start<br>shapes <em>everything</em>.</h3>
+        <p class="gallery-p">Morning Body Battery and overnight HRV reveal whether today's capacity is there — before you open your first meeting.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-src="Assets/images/sections/morning-recovery.png">
+      <div class="gallery-img" style="background-image:url('Assets/images/sections/morning-recovery.png')"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-label">
+        <h3 class="gallery-h3">Six dimensions,<br>one <em>picture</em>.</h3>
+        <p class="gallery-p">Stress, energy, sleep, HRV, movement, and recovery — Apex Lab brings every signal together into one readable view of your health.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Fullscreen modal -->
+  <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
+    <button class="gallery-modal-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="gallery-modal-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="gallery-modal-inner">
+      <img class="gallery-modal-img" src="" alt="Inside Apex Lab">
+    </div>
+    <button class="gallery-modal-next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="gallery-modal-counter"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     4. FEATURES — What We Measure (2x2 asymmetric, orbai-style)
+     ═══════════════════════════════════ -->
+<section class="features reveal" id="measure">
+  <div class="container">
+    <div class="section-head section-head-center stagger">
+      <div class="eyebrow">What We Measure</div>
+      <h2>Four dimensions of health,<br>one connected <em>picture</em></h2>
+      <p>Continuous wearable data and your work calendar combine into a full view of how work shapes your body — measured, not self-reported.</p>
+    </div>
+
+    <div class="feature-grid stagger">
+      <!-- 1 — top-left: wide image-left -->
+      <div class="feature-card has-shader feature-card--image feature-card--image-left">
+        <div class="card-shader-wrap" id="shader-stress"></div>
+        <div class="feature-card-media">
+          <img src="Assets/images/features/stress-recovery.png" alt="Stress and recovery" loading="lazy">
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h4>Stress &amp; Recovery</h4>
+          <p>Moment-to-moment stress load and whether your body genuinely recovers &mdash; measured continuously, not guessed from a survey.</p>
+        </div>
+      </div>
+
+      <!-- 2 — top-right: narrow icon + bg -->
+      <div class="feature-card has-shader feature-card--bg">
+        <div class="card-shader-wrap" id="shader-battery"></div>
+        <div class="feature-card-body">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="18" height="10" rx="2"/>
+              <line x1="22" y1="11" x2="22" y2="13"/>
+              <rect x="5" y="10" width="9" height="4" rx="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h4>Body Battery</h4>
+          <p>Energy in, energy out. See exactly what drains your reserves through the day and what recharges them.</p>
+        </div>
+      </div>
+
+      <!-- 3 — bottom-left: narrow icon + bg -->
+      <div class="feature-card has-shader feature-card--bg">
+        <div class="card-shader-wrap" id="shader-sleep"></div>
+        <div class="feature-card-body">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </div>
+          <h4>Sleep Architecture</h4>
+          <p>Deep sleep, REM cycles, overnight HRV &mdash; the quality of the recovery that shapes how you show up the next day.</p>
+        </div>
+      </div>
+
+      <!-- 4 — bottom-right: wide image-right -->
+      <div class="feature-card has-shader feature-card--image feature-card--image-right">
+        <div class="card-shader-wrap" id="shader-calendar"></div>
+        <div class="feature-card-body">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h4>Calendar Intelligence</h4>
+          <p>Every meeting, task, and routine mapped to the stress and recovery it actually produces in your body.</p>
+        </div>
+        <div class="feature-card-media">
+          <img src="Assets/images/features/body-battery.png" alt="Group presentation" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-cta">
+      <a href="#contact" class="btn-primary">
+        Get Started
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#how" class="btn-secondary">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     4.5 MANIFESTO — word-by-word scroll reveal (orbai pattern)
+     Bridges "what we measure" and "how it works" with the philosophy.
+     ═══════════════════════════════════ -->
+<section class="manifesto reveal" id="manifesto" aria-labelledby="manifesto-heading">
+  <div class="container manifesto-grid">
+    <div class="manifesto-text">
+    <div class="manifesto-eyebrow">Our methodology</div>
+    <p class="manifesto-body">
+      <span class="word">The</span>
+      <span class="word">Apex</span>
+      <span class="word">Lab</span>
+      <span class="word">measures</span>
+      <span class="word word-strong">physical</span>
+      <span class="word word-strong">health,</span>
+      <span class="word word-strong">mental</span>
+      <span class="word word-strong">health,</span>
+      <span class="word">and</span>
+      <span class="word word-strong">stress</span>
+      <span class="word">&mdash;</span>
+      <span class="word">then</span>
+      <span class="word">quantifies</span>
+      <span class="word">your</span>
+      <span class="word">workload</span>
+      <span class="word">so</span>
+      <span class="word">you</span>
+      <span class="word">deliver</span>
+      <span class="word word-strong">next-level</span>
+      <span class="word word-strong">performance.</span>
+    </p>
+    <h2 class="manifesto-punch" id="manifesto-heading">
+      <span class="punch-line">No guesswork.</span>
+      <span class="punch-line punch-line-accent">All measured.</span>
+    </h2>
+    </div>
+    <div class="manifesto-visual" aria-hidden="true">
+      <img src="Assets/images/sport/basketbal-dunk.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     5. HOW IT WORKS — orbai staggered cards
+     ═══════════════════════════════════ -->
+<section class="how reveal" id="how">
+  <div class="container">
+    <div class="section-head section-head-center stagger">
+      <div class="eyebrow">How It Works</div>
+      <h2>From wearable to insight,<br>in three <em>steps</em></h2>
+    </div>
+
+    <div class="how-grid stagger">
+      <!-- 01 — tall left card -->
+      <div class="how-card has-shader how-card--tall">
+        <div class="card-shader-wrap" id="shader-how-wear"></div>
+        <div class="how-card-head">
+          <div class="how-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>
+            </svg>
+          </div>
+          <h3>Wear your device</h3>
+          <p>Participants wear a compatible Garmin, WHOOP, Oura, Fitbit, or Labfront device 24/7 &mdash; capturing heart rate, stress, sleep, and Body Battery.</p>
+        </div>
+        <div class="how-card-meta">
+          <div class="how-card-num">01</div>
+          <div class="how-card-dots"><span class="how-card-dot active"></span><span class="how-card-dot"></span><span class="how-card-dot"></span></div>
+        </div>
+        <div class="how-card-media">
+          <img src="Assets/images/wearables/step-wear-device.png" alt="Smartwatch on wrist" loading="lazy">
+        </div>
+      </div>
+
+      <!-- 02 — top-right -->
+      <div class="how-card has-shader">
+        <div class="card-shader-wrap" id="shader-how-calendar"></div>
+        <div class="how-card-head">
+          <div class="how-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h3>Connect your calendar</h3>
+          <p>Export your work calendar as ICS. Every meeting and task is linked to the physiological response it actually produces.</p>
+        </div>
+        <div class="how-card-meta">
+          <div class="how-card-num">02</div>
+          <div class="how-card-dots"><span class="how-card-dot"></span><span class="how-card-dot active"></span><span class="how-card-dot"></span></div>
+        </div>
+        <div class="how-card-media">
+          <img src="Assets/images/werk/step-connect-calendar.png" alt="Hands typing on a laptop showing a weekly calendar" loading="lazy">
+        </div>
+      </div>
+
+      <!-- 03 — bottom-right -->
+      <div class="how-card has-shader">
+        <div class="card-shader-wrap" id="shader-how-report"></div>
+        <div class="how-card-head">
+          <div class="how-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <h3>Get your report</h3>
+          <p>A clear, personalized report with patterns, drivers, and practical recommendations for sustainable performance.</p>
+        </div>
+        <div class="how-card-meta">
+          <div class="how-card-num">03</div>
+          <div class="how-card-dots"><span class="how-card-dot"></span><span class="how-card-dot"></span><span class="how-card-dot active"></span></div>
+        </div>
+        <div class="how-card-media how-card-mock">
+          <div class="mock-frame">
+            <div class="mock-briefing">
+              <div class="mock-label">Daily Briefing</div>
+              <div class="mock-head">Your system is rested.<br><em>Primed for deep work.</em></div>
+            </div>
+            <div class="mock-metrics">
+              <div class="mock-metric">
+                <div class="mock-metric-ring">
+                  <svg class="mock-arc" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(74,70,64,0.08)" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="#6B8F71" stroke-width="6" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="41" transform="rotate(-90 50 50)"/>
+                  </svg>
+                  <div class="mock-metric-val">85</div>
+                </div>
+                <div class="mock-metric-label">Body Battery</div>
+              </div>
+              <div class="mock-metric">
+                <div class="mock-metric-ring">
+                  <svg class="mock-arc" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(74,70,64,0.08)" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="#B8860B" stroke-width="6" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="188" transform="rotate(-90 50 50)"/>
+                  </svg>
+                  <div class="mock-metric-val">32</div>
+                </div>
+                <div class="mock-metric-label">Stress Index</div>
+              </div>
+            </div>
+            <div class="mock-timeline">
+              <div class="mock-tl-item">
+                <span class="mock-dot" style="background:#6B8F71"></span>
+                <div class="mock-tl-body">
+                  <div class="mock-tl-time">09:00 — 12:00</div>
+                  <div class="mock-tl-title">Deep Work Window</div>
+                </div>
+              </div>
+              <div class="mock-tl-item">
+                <span class="mock-dot" style="background:#B8860B"></span>
+                <div class="mock-tl-body">
+                  <div class="mock-tl-time">13:30 — 15:00</div>
+                  <div class="mock-tl-title">Collaborative Block</div>
+                </div>
+              </div>
+              <div class="mock-tl-item">
+                <span class="mock-dot" style="background:#6B7D8A"></span>
+                <div class="mock-tl-body">
+                  <div class="mock-tl-time">17:00 — 18:00</div>
+                  <div class="mock-tl-title">Active Recovery</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -533,15 +831,59 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════
+     6. CLIENTS — "What participants say" (orbai-style testimonials)
+        Replaces the parked "The Science" section
+        (docs/parked/website-science-section.html)
+     ═══════════════════════════════════ -->
+<section class="clients reveal" id="clients">
+  <div class="container">
+
+    <div class="clients-header stagger">
+      <div class="clients-eyebrow">Participants</div>
+      <h2>What participants<br><em>say</em></h2>
+      <p>Early users of Apex Lab turn continuous wearable data into real changes in how they work, recover, and perform.</p>
+    </div>
+
+    <!-- Hero row: big pull-quote + image -->
+    <div class="clients-hero">
+      <article class="client-quote-card has-shader">
+        <div class="card-shader-wrap" id="shader-clients-quote"></div>
+        <blockquote>
+          <span class="q-word">Apex</span> <span class="q-word">Lab</span> <span class="q-word">gave</span> <span class="q-word">us</span> <span class="q-word">the</span> <span class="q-word">first</span> <span class="q-em"><span class="q-word">measurable</span> <span class="q-word">view</span></span> <span class="q-word">of</span> <span class="q-word">how</span> <span class="q-word">our</span> <span class="q-word">week</span> <span class="q-word">actually</span> <span class="q-word">lands</span> <span class="q-word">on</span> <span class="q-word">the</span> <span class="q-word">body</span> <span class="q-word">&mdash;</span> <span class="q-word">insights</span> <span class="q-word">we</span> <span class="q-word">used</span> <span class="q-word">to</span> <span class="q-em"><span class="q-word">restructure</span> <span class="q-word">our</span> <span class="q-word">meeting</span> <span class="q-word">rhythm</span></span> <span class="q-word">and</span> <span class="q-word">protect</span> <span class="q-em"><span class="q-word">recovery</span></span> <span class="q-word">before</span> <span class="q-word">burnout</span> <span class="q-word">set</span> <span class="q-word">in.</span>
+        </blockquote>
+      </article>
+      <div class="client-image-card">
+        <img src="Assets/images/werk/vrouw-laptop-glimlach.png" alt="Participant working at her desk" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="clients-stats">
+      <div class="client-stat">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Days of continuous data per participant</div>
+      </div>
+      <div class="client-stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Dimensions of health measured</div>
+      </div>
+      <div class="client-stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Private, encrypted monitoring</div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════
-     FAQ
+     6. FAQ — grouped by category
      ═══════════════════════════════════ -->
 <section class="faq-section reveal" id="faq">
   <div class="container">
     <div class="faq-header">
       <h2>Frequently Asked Questions</h2>
-      <a href="mailto:info@apexlab.nl" class="faq-more">Contact us</a>
     </div>
 
     <div class="faq-grid">
@@ -552,26 +894,26 @@
             What data do you collect?
             <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-a"><p>We collect physiological data from Garmin wearables through Labfront — including heart rate, stress levels, Body Battery, respiration, sleep, and optionally HRV. We also integrate your work calendar (ICS format) to map activities to health responses.</p></div>
+          <div class="faq-a"><p>Physiological data from your wearable &mdash; heart rate, stress, Body Battery, respiration, sleep, and optionally HRV. We also integrate your work calendar (ICS format) to map activities to health responses.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">
-            Do I need a specific Garmin device?
+            Do I need a specific wearable?
             <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-a"><p>Most modern Garmin watches that support Labfront are compatible. This includes popular models from the Venu, Forerunner, and Fenix series. We can advise on specific compatibility before starting.</p></div>
+          <div class="faq-a"><p>Apex Lab supports Garmin, WHOOP, Oura, Fitbit, and Labfront. Most modern models from these brands are compatible &mdash; we can advise on the specifics for your device before starting.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">
             How long does a measurement period last?
             <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-a"><p>A typical measurement period runs for 2 to 4 weeks. This gives us enough data to identify meaningful patterns in your stress, recovery, and work-related health responses. Longer tracking is available for longitudinal insights.</p></div>
+          <div class="faq-a"><p>A typical measurement period runs for 2 to 4 weeks. This gives us enough data to identify meaningful patterns in stress, recovery, and work-related health responses. Longer tracking is available for longitudinal insights.</p></div>
         </div>
       </div>
     </div>
 
-    <div class="faq-grid" style="margin-top: 0;">
+    <div class="faq-grid">
       <div class="faq-category">Privacy</div>
       <div class="faq-list">
         <div class="faq-item">
@@ -579,7 +921,7 @@
             Is my data shared with my employer?
             <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-a"><p>No. Individual reports belong to the participant. If an organization commissions the study, they only receive anonymized, aggregate-level insights — never personal data. Privacy is fundamental to how Apex Lab operates.</p></div>
+          <div class="faq-a"><p>No. Individual reports belong to the participant. If an organization commissions the study, they only receive anonymized, aggregate-level insights &mdash; never personal data. Privacy is fundamental to how Apex Lab operates.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">
@@ -594,71 +936,140 @@
 </section>
 
 <!-- ═══════════════════════════════════
-     CTA — CINEMATIC CLOSE
+     7. CTA — cinematic with image background + pilot intake form
      ═══════════════════════════════════ -->
 <section class="cta-section" id="contact">
-  <img src="Assets/images/10.webp" alt="" class="cta-bg-img" loading="lazy">
+  <img src="Assets/images/sport/inc-performance.webp" alt="" class="cta-bg-img" loading="lazy">
   <div class="cta-overlay"></div>
   <div class="cta-content">
-    <div class="showcase-label" style="color: rgba(255,255,255,0.5);">Start today</div>
+    <div class="showcase-label" style="color: rgba(255,255,255,0.5);">Start a pilot</div>
     <h2>Your health is your<br>greatest <em>asset</em></h2>
-    <p>Start with a pilot. No commitment — just data-driven clarity about how work affects your health and performance.</p>
-    <a href="mailto:info@apexlab.nl" class="cta-btn">
-      Get in Touch
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <p>Tell us a little about you and we'll get back within two working days with a pilot proposal.</p>
+
+    <form
+      id="pilot-intake-form"
+      name="pilot-intake"
+      class="cta-form"
+    >
+      <p class="cta-form-hp"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+      <div class="cta-form-row">
+        <div class="cta-form-field">
+          <label for="cta-name">Name</label>
+          <input id="cta-name" type="text" name="name" autocomplete="name" required>
+        </div>
+        <div class="cta-form-field">
+          <label for="cta-email">Work email</label>
+          <input id="cta-email" type="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div class="cta-form-row">
+        <div class="cta-form-field">
+          <label for="cta-size">Team size</label>
+          <select id="cta-size" name="team_size" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="solo">Just me</option>
+            <option value="2-10">2 – 10</option>
+            <option value="11-50">11 – 50</option>
+            <option value="51+">51+</option>
+          </select>
+        </div>
+        <div class="cta-form-field">
+          <label for="cta-wearable">Wearable</label>
+          <select id="cta-wearable" name="wearable" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="garmin">Garmin</option>
+            <option value="whoop">WHOOP</option>
+            <option value="oura">Oura</option>
+            <option value="fitbit">Fitbit</option>
+            <option value="polar">Polar</option>
+            <option value="labfront">Labfront</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="cta-btn cta-btn-submit">
+        Request a pilot
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <p class="cta-form-fineprint">No spam, just a reply.</p>
+    </form>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     FOOTER
+     8. FOOTER — multi-column
      ═══════════════════════════════════ -->
-<footer class="footer">
+<footer class="footer" id="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand-col">
-        <img src="Assets/logos/Zwart.png" alt="Apex Lab" class="footer-logo-sm">
-        <p class="footer-tagline">Work-health intelligence</p>
-      </div>
-      <div class="footer-col">
-        <h4>Apex Lab</h4>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="what-we-measure.html">What We Measure</a>
-        <a href="for-teams.html">For Teams</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="our-approach.html">Our Approach</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="blog.html">Blog</a>
-        <a href="mailto:info@apexlab.nl">Contact Us</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="privacy.html">Privacyverklaring</a>
-        <a href="terms.html">Algemene Voorwaarden</a>
-        <a href="cookies.html">Cookieverklaring</a>
-        <a href="disclaimer.html">Disclaimer</a>
-      </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="#">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
+    <div class="footer-top">
+      <!-- LEFT: brand + description + socials -->
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-logo" aria-label="Apex Lab">
+          <img src="Assets/logos/Zwart vol.png?v=2" alt="Apex Lab">
         </a>
-        <a href="mailto:info@apexlab.nl">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          info@apexlab.nl
-        </a>
+        <p class="footer-description">Work-health intelligence. Continuous wearable data meets your work calendar to reveal how work shapes your body &mdash; and what it takes to sustain it.</p>
+        <ul class="footer-socials">
+          <li>
+            <a href="https://www.linkedin.com/company/apex-lab" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@apexlab.nl" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-10 6L2 7"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: 3 link sections -->
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#measure">What We Measure</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#clients">Participants</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="mailto:info@apexlab.nl">Contact</a></li>
+            <li><a href="https://dashboard.apexlab.nl">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; 2026 Apex Lab. All rights reserved.</span>
-      <div class="footer-legal">
-        <a href="privacy.html">Privacyverklaring</a>
-        <a href="terms.html">Algemene Voorwaarden</a>
-      </div>
+      <p class="footer-copyright">&copy; 2026 Apex Lab. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="privacy.html">Privacyverklaring</a></li>
+        <li><a href="terms.html">Algemene Voorwaarden</a></li>
+      </ul>
     </div>
   </div>
 </footer>
@@ -666,7 +1077,7 @@
 <script src="js/main.js"></script>
 
 <script>
-/* ── Carousel navigation + expand ── */
+/* ── Science carousel: nav arrows, expand, drag-to-scroll ── */
 (function() {
   const track = document.getElementById('scienceCarousel');
   const prev  = document.getElementById('carouselPrev');
@@ -681,7 +1092,6 @@
   prev.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
   next.addEventListener('click', () => track.scrollBy({ left:  scrollAmount(), behavior: 'smooth' }));
 
-  /* Enable / disable arrows at edges */
   function updateArrows() {
     prev.disabled = track.scrollLeft <= 4;
     next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
@@ -689,20 +1099,16 @@
   track.addEventListener('scroll', updateArrows, { passive: true });
   updateArrows();
 
-  /* Expand / collapse on + button click */
   track.querySelectorAll('.carousel-expand').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const card = btn.closest('.carousel-card');
       const wasExpanded = card.classList.contains('is-expanded');
-      /* Collapse any other open card first */
       track.querySelectorAll('.carousel-card.is-expanded').forEach(c => c.classList.remove('is-expanded'));
-      /* Toggle this one */
       if (!wasExpanded) card.classList.add('is-expanded');
     });
   });
 
-  /* Collapse when clicking outside the description area */
   track.querySelectorAll('.carousel-card').forEach(card => {
     card.addEventListener('click', (e) => {
       if (!e.target.closest('.carousel-expand') && !e.target.closest('.carousel-desc')) {
@@ -711,12 +1117,90 @@
     });
   });
 
-  /* Drag-to-scroll on desktop */
+  /* Pilot intake: open user's mail client with a pre-filled message, then show success state */
+  const pilotForm = document.getElementById('pilot-intake-form');
+  if (pilotForm) {
+    pilotForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (pilotForm.querySelector('[name="bot-field"]').value) return;
+      const data = new FormData(pilotForm);
+      const name = (data.get('name') || '').trim();
+      const email = (data.get('email') || '').trim();
+      const teamSize = data.get('team_size') || '';
+      const wearable = data.get('wearable') || '';
+      const subject = `Pilot intake — ${name || 'new request'}`;
+      const body = [
+        `Name: ${name}`,
+        `Work email: ${email}`,
+        `Team size: ${teamSize}`,
+        `Wearable: ${wearable}`,
+        '',
+        'Sent via apexlab.nl pilot intake form.'
+      ].join('\n');
+      const mailto = `mailto:info@apexlab.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const ctaContent = document.querySelector('.cta-content');
+      if (ctaContent) {
+        pilotForm.outerHTML = '<div class="cta-success"><div class="cta-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Your mail client is opening…</h3><p>Review the pre-filled message and hit send. We\'ll reply within two working days.</p></div>';
+        ctaContent.querySelector('h2').textContent = 'Almost done';
+        const leadP = ctaContent.querySelector('p');
+        if (leadP) leadP.remove();
+      }
+      window.location.href = mailto;
+    });
+  }
+
   let isDragging = false, startX, scrollStart;
   track.addEventListener('mousedown', e => { isDragging = true; startX = e.pageX; scrollStart = track.scrollLeft; track.style.cursor = 'grabbing'; });
   window.addEventListener('mousemove', e => { if (!isDragging) return; e.preventDefault(); track.scrollLeft = scrollStart - (e.pageX - startX); });
   window.addEventListener('mouseup', () => { isDragging = false; track.style.cursor = ''; });
 })();
+</script>
+
+<script type="module">
+import { ShaderMount, warpFragmentShader, WarpPatterns, getShaderColorFromString, getShaderNoiseTexture, ShaderFitOptions } from '/js/shaders-dist/index.js';
+const SHADER_CONFIGS = {
+  'shader-stress':   { colors: ['hsl(5, 95%, 25%)',  'hsl(22, 100%, 58%)',  'hsl(350, 90%, 38%)', 'hsl(18, 100%, 68%)'],  speed: 0.70 },
+  'shader-battery':  { colors: ['hsl(145, 95%, 22%)', 'hsl(128, 100%, 48%)', 'hsl(160, 90%, 30%)', 'hsl(110, 95%, 58%)'],  speed: 0.70 },
+  'shader-sleep':    { colors: ['hsl(228, 95%, 22%)', 'hsl(248, 100%, 62%)', 'hsl(215, 90%, 30%)', 'hsl(262, 100%, 72%)'], speed: 0.65 },
+  'shader-calendar': { colors: ['hsl(28, 95%, 25%)',  'hsl(48, 100%, 58%)',  'hsl(38, 90%, 32%)',  'hsl(55, 100%, 65%)'],  speed: 0.68 },
+  'shader-how-wear':     { colors: ['hsl(195, 90%, 20%)', 'hsl(210, 100%, 50%)', 'hsl(185, 85%, 28%)', 'hsl(220, 95%, 62%)'], speed: 0.60 },
+  'shader-how-calendar': { colors: ['hsl(28, 95%, 25%)',  'hsl(48, 100%, 55%)',  'hsl(15, 90%, 35%)',  'hsl(42, 100%, 62%)'], speed: 0.65 },
+  'shader-how-report':   { colors: ['hsl(155, 90%, 18%)', 'hsl(140, 100%, 42%)', 'hsl(170, 85%, 25%)', 'hsl(130, 95%, 55%)'], speed: 0.62 },
+  'shader-clients-quote': { colors: ['hsl(240, 60%, 15%)', 'hsl(258, 75%, 42%)', 'hsl(222, 70%, 22%)', 'hsl(275, 70%, 55%)'], speed: 0.50 },
+};
+const noiseTexture = getShaderNoiseTexture();
+function initShaders() {
+  for (const [id, cfg] of Object.entries(SHADER_CONFIGS)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    new ShaderMount(el, warpFragmentShader, {
+      u_colors: cfg.colors.map(getShaderColorFromString),
+      u_colorsCount: cfg.colors.length,
+      u_proportion: 0.38,
+      u_softness: 1.1,
+      u_distortion: 0.20,
+      u_swirl: 0.85,
+      u_swirlIterations: 12,
+      u_shapeScale: 0.09,
+      u_shape: WarpPatterns.checks,
+      u_noiseTexture: noiseTexture,
+      u_scale: 1,
+      u_rotation: 0,
+      u_fit: ShaderFitOptions.none,
+      u_offsetX: 0,
+      u_offsetY: 0,
+      u_originX: 0.5,
+      u_originY: 0.5,
+      u_worldWidth: 0,
+      u_worldHeight: 0,
+    }, {}, cfg.speed);
+  }
+}
+if (noiseTexture.complete) {
+  initShaders();
+} else {
+  noiseTexture.onload = initShaders;
+}
 </script>
 
 </body>

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Lab 2.0 — Hero + Insight prototype</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM v2.0 TOKENS — Apex Lab
+   ═══════════════════════════════════════════════════════ */
+:root {
+  --bg: #FAF9F7;
+  --surface-1: #FFFFFF;
+  --surface-2: #F5F4F2;
+  --surface-3: #ECEAE6;
+
+  --text-primary: #1A1915;
+  --text-secondary: #4A4640;
+  --text-tertiary: #7A756C;
+  --text-quaternary: #A8A29E;
+
+  --accent: #6B7D8A;
+  --accent-hover: #5A6C79;
+  --accent-dim: rgba(107,125,138,0.10);
+  --accent-ring: rgba(107,125,138,0.15);
+
+  --border-subtle: rgba(74,70,64,0.06);
+  --border-default: rgba(74,70,64,0.12);
+  --border-emphasis: rgba(74,70,64,0.20);
+
+  --dark-obsidian: #2E2B27;
+
+  --sage: #6B8F71;
+  --sage-dim: rgba(107,143,113,0.10);
+  --terracotta: #A04838;
+  --terracotta-dim: rgba(160,72,56,0.10);
+  --gold: #B8860B;
+  --gold-dim: rgba(184,134,11,0.10);
+  --umber: #8B7355;
+  --copper: #A0785A;
+
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 { font-family: var(--font-heading); letter-spacing: -0.02em; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ═══════════════════════════════════════════════════════
+   NAV — floating pill (v3.1 style preserved)
+   ═══════════════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 16px; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: center;
+  pointer-events: none;
+}
+.nav-pill {
+  pointer-events: auto;
+  display: flex; align-items: center; gap: 28px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  padding: 8px 10px 8px 20px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+.nav-logo { font-family: var(--font-heading); font-weight: 700; font-size: 16px; letter-spacing: -0.02em; color: var(--text-primary); }
+.nav-logo em { font-style: normal; color: var(--accent); }
+.nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 13px; font-weight: 500; transition: color 0.2s ease; }
+.nav-links a:hover { color: var(--text-primary); }
+.nav-cta { background: var(--text-primary); color: #fff !important; padding: 8px 18px; border-radius: 100px; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════
+   HERO 2.0 — calendar × physiology viz
+   ═══════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  padding: 140px 24px 80px;
+  display: flex; align-items: center;
+  position: relative;
+  background: radial-gradient(1200px 600px at 80% 20%, var(--accent-dim), transparent 70%),
+              radial-gradient(900px 500px at 10% 80%, rgba(107,143,113,0.06), transparent 70%),
+              var(--bg);
+}
+.hero-grid {
+  max-width: 1280px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px;
+  align-items: center;
+}
+
+/* LEFT — copy */
+.hero-outcome {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--terracotta-dim);
+  border: 1px solid rgba(160,72,56,0.18);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 28px;
+}
+.hero-outcome-num { font-family: var(--font-heading); font-weight: 800; font-size: 15px; letter-spacing: -0.02em; }
+
+.hero h1 {
+  font-size: clamp(48px, 6.5vw, 88px);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+}
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+.hero-sub {
+  font-size: 19px; line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  font-family: var(--font-body); font-weight: 600; font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--text-primary); color: #fff; }
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-secondary { color: var(--text-primary); border-color: var(--border-emphasis); }
+.btn-secondary:hover { border-color: var(--text-primary); background: var(--surface-1); }
+.btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+.hero-meta {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  padding-top: 28px; border-top: 1px solid var(--border-subtle);
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.hero-meta-num { font-family: var(--font-heading); font-weight: 800; font-size: 24px; letter-spacing: -0.03em; color: var(--text-primary); }
+.hero-meta-label { font-size: 12px; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.02em; }
+
+/* RIGHT — hero visual: calendar × physiology card */
+.hero-viz {
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 24px 60px -20px rgba(26,25,21,0.18), 0 8px 24px rgba(26,25,21,0.06);
+  transform: perspective(1600px) rotateY(-6deg) rotateX(2deg);
+  transform-origin: center right;
+}
+.hero-viz::before {
+  content: ""; position: absolute; inset: -1px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.6), transparent 40%);
+  pointer-events: none; z-index: 1;
+}
+.viz-header { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 16px; border-bottom: 1px solid var(--border-subtle); }
+.viz-brand { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); }
+.viz-live { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--text-tertiary); letter-spacing: 0.04em; text-transform: uppercase; }
+.viz-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 3px var(--sage-dim); animation: livePulse 2s ease-in-out infinite; }
+@keyframes livePulse { 50% { box-shadow: 0 0 0 6px transparent; } }
+
+.viz-top {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; padding: 20px 0;
+}
+.viz-kpi { background: var(--surface-2); border-radius: 12px; padding: 14px; }
+.viz-kpi-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+.viz-kpi-value { font-family: var(--font-heading); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; color: var(--text-primary); line-height: 1; }
+.viz-kpi-unit { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--text-tertiary); }
+.viz-kpi-trend { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; margin-top: 6px; }
+.trend-up { color: var(--sage); }
+.trend-down { color: var(--terracotta); }
+
+/* Calendar × physiology chart */
+.viz-chart { padding: 12px 0 8px; }
+.viz-chart-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; display: flex; justify-content: space-between; }
+.viz-chart-legend { display: flex; gap: 12px; font-size: 10px; color: var(--text-tertiary); text-transform: none; letter-spacing: 0; font-weight: 500; }
+.viz-chart-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.viz-chart-legend span::before { content: ""; width: 8px; height: 2px; border-radius: 2px; }
+.legend-bb::before { background: var(--sage); }
+.legend-stress::before { background: var(--terracotta); }
+
+.viz-chart-svg { width: 100%; height: 170px; }
+
+/* Calendar row underneath */
+.viz-calendar {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
+.cal-block {
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 9px; font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  min-height: 34px;
+  display: flex; flex-direction: column; justify-content: center;
+  border: 1px solid var(--border-subtle);
+}
+.cal-block-time { font-size: 8px; color: var(--text-tertiary); letter-spacing: 0.04em; margin-bottom: 2px; font-weight: 500; }
+.cal-meet { background: var(--terracotta-dim); border-color: rgba(160,72,56,0.2); color: var(--terracotta); }
+.cal-deep { background: var(--sage-dim); border-color: rgba(107,143,113,0.2); color: var(--sage); }
+.cal-break { background: var(--surface-2); border-color: var(--border-default); color: var(--text-tertiary); }
+.cal-admin { background: var(--gold-dim); border-color: rgba(184,134,11,0.2); color: var(--gold); }
+
+/* Floating annotation pills on viz */
+.viz-annotation {
+  position: absolute;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 11px; font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex; align-items: center; gap: 6px;
+  z-index: 2;
+}
+.viz-annotation-dot { width: 6px; height: 6px; border-radius: 50%; }
+.viz-annotation-1 { top: 28%; right: -40px; }
+.viz-annotation-1 .viz-annotation-dot { background: var(--terracotta); }
+.viz-annotation-2 { bottom: 24%; left: -30px; }
+.viz-annotation-2 .viz-annotation-dot { background: var(--sage); }
+
+/* ═══════════════════════════════════════════════════════
+   TRUST STRIP
+   ═══════════════════════════════════════════════════════ */
+.trust {
+  padding: 60px 24px;
+  background: var(--bg);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.trust-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 48px; align-items: center;
+}
+.trust-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.trust-logos {
+  display: flex; flex-wrap: wrap;
+  gap: 36px; align-items: center;
+  justify-content: center;
+}
+.trust-logos img { height: 22px; opacity: 0.6; filter: grayscale(1); transition: all 0.2s; }
+.trust-logos img:hover { opacity: 1; filter: grayscale(0); }
+.trust-logo-text { font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--text-tertiary); letter-spacing: -0.02em; }
+.trust-badges { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.trust-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+.trust-badge svg { width: 12px; height: 12px; stroke: var(--sage); stroke-width: 2.5; fill: none; }
+
+/* ═══════════════════════════════════════════════════════
+   THE INSIGHT — full-width dashboard reveal
+   ═══════════════════════════════════════════════════════ */
+.insight {
+  padding: 140px 24px 120px;
+  background: var(--bg);
+}
+.insight-head {
+  max-width: 880px; margin: 0 auto 64px;
+  text-align: center;
+}
+.insight-eyebrow {
+  display: inline-block;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: var(--accent-dim);
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.insight h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+.insight h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+.insight-lead { font-size: 18px; line-height: 1.6; color: var(--text-secondary); }
+
+/* The big dashboard card */
+.insight-frame {
+  max-width: 1200px; margin: 0 auto;
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 40px 80px -30px rgba(26,25,21,0.14), 0 16px 40px rgba(26,25,21,0.06);
+}
+.insight-frame-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 20px; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.insight-tabs { display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 100px; }
+.insight-tab { padding: 7px 16px; font-size: 12px; font-weight: 600; color: var(--text-tertiary); border-radius: 100px; cursor: pointer; transition: all 0.2s; border: none; background: transparent; font-family: inherit; }
+.insight-tab.active { background: var(--surface-1); color: var(--text-primary); box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+
+.insight-frame-title { font-family: var(--font-heading); font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+.insight-frame-title span { color: var(--text-tertiary); font-weight: 500; }
+
+/* Inside the frame: a week view */
+.insight-week {
+  display: grid;
+  grid-template-columns: 56px repeat(5, 1fr);
+  gap: 2px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-3);
+}
+.week-hour { background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-tertiary); font-weight: 600; letter-spacing: 0.04em; padding: 10px 0; }
+.week-daycol { background: var(--surface-1); display: flex; flex-direction: column; }
+.week-dayhead { padding: 10px 12px; font-family: var(--font-heading); font-weight: 700; font-size: 12px; color: var(--text-secondary); letter-spacing: 0.02em; border-bottom: 1px solid var(--border-subtle); background: var(--surface-1); display: flex; justify-content: space-between; align-items: center; }
+.week-dayhead-meta { font-family: var(--font-body); font-size: 10px; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0; }
+.week-hour-cell { height: 34px; border-bottom: 1px dashed var(--border-subtle); position: relative; }
+.week-event {
+  position: absolute; left: 6px; right: 6px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 10px; font-weight: 600;
+  line-height: 1.25;
+  border: 1px solid transparent;
+}
+.week-event-time { font-size: 9px; font-weight: 500; opacity: 0.7; margin-bottom: 1px; }
+.ev-meet { background: var(--terracotta-dim); border-color: rgba(160,72,56,0.22); color: var(--terracotta); }
+.ev-deep { background: var(--sage-dim); border-color: rgba(107,143,113,0.22); color: var(--sage); }
+.ev-admin { background: var(--gold-dim); border-color: rgba(184,134,11,0.22); color: var(--gold); }
+.ev-social { background: rgba(107,125,138,0.10); border-color: rgba(107,125,138,0.22); color: var(--accent); }
+
+/* Body battery overlay across the week */
+.insight-overlay {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--surface-2);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.overlay-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--sage); }
+.overlay-lead { font-size: 13px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4; }
+.overlay-chart { width: 100%; height: 56px; }
+
+/* Callouts around the frame */
+.callout {
+  position: absolute;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 12px 14px;
+  max-width: 220px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  z-index: 2;
+}
+.callout-title { font-family: var(--font-heading); font-weight: 700; font-size: 13px; color: var(--text-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.callout-title::before { content: ""; width: 6px; height: 6px; border-radius: 50%; }
+.callout-1 { top: -20px; left: -30px; transform: rotate(-2deg); }
+.callout-1 .callout-title::before { background: var(--terracotta); }
+.callout-2 { bottom: 60px; right: -40px; transform: rotate(1.5deg); }
+.callout-2 .callout-title::before { background: var(--sage); }
+.callout-3 { bottom: -20px; left: 15%; transform: rotate(-1deg); }
+.callout-3 .callout-title::before { background: var(--gold); }
+
+/* Below the frame: insight summary */
+.insight-sum {
+  max-width: 920px; margin: 64px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.insight-sum-card {
+  padding: 24px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+}
+.insight-sum-card.is-alert { border-left-color: var(--terracotta); }
+.insight-sum-card.is-good { border-left-color: var(--sage); }
+.insight-sum-num { font-family: var(--font-heading); font-weight: 800; font-size: 32px; letter-spacing: -0.03em; color: var(--text-primary); line-height: 1; margin-bottom: 10px; }
+.insight-sum-card.is-alert .insight-sum-num { color: var(--terracotta); }
+.insight-sum-card.is-good .insight-sum-num { color: var(--sage); }
+.insight-sum-label { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 64px; }
+  .hero-viz { transform: none; max-width: 560px; margin: 0 auto; }
+  .viz-annotation-1, .viz-annotation-2 { display: none; }
+  .trust-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .trust-label, .trust-badges { justify-content: center; }
+  .callout { display: none; }
+}
+
+@media (max-width: 760px) {
+  .hero { padding: 120px 20px 64px; }
+  .hero h1 { font-size: 44px; }
+  .hero-sub { font-size: 17px; }
+  .insight { padding: 80px 20px; }
+  .insight h2 { font-size: 32px; }
+  .insight-frame { padding: 20px; border-radius: 16px; }
+  .insight-week { grid-template-columns: 40px repeat(5, 1fr); }
+  .week-hour { font-size: 9px; }
+  .week-dayhead { padding: 8px 6px; font-size: 10px; }
+  .week-dayhead-meta { display: none; }
+  .week-event { padding: 3px 5px; font-size: 9px; }
+  .insight-overlay { grid-template-columns: 1fr; gap: 12px; }
+  .insight-sum { grid-template-columns: 1fr; }
+  .hero-meta { gap: 20px; }
+  .nav-links li:not(:last-child) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-pill">
+    <a href="/" class="nav-logo">Apex<em>Lab</em></a>
+    <ul class="nav-links">
+      <li><a href="#insight">Platform</a></li>
+      <li><a href="#">What we measure</a></li>
+      <li><a href="#">How it works</a></li>
+      <li><a href="#">Stories</a></li>
+      <li><a href="#" class="nav-cta">Start a pilot</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═════════ HERO 2.0 ═════════ -->
+<section class="hero">
+  <div class="hero-grid">
+
+    <!-- LEFT: copy -->
+    <div class="hero-copy">
+      <div class="hero-outcome">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        <span class="hero-outcome-num">−31%</span> stress on well-designed deep-work days
+      </div>
+
+      <h1>See how work<br>affects your <em>body</em>.</h1>
+
+      <p class="hero-sub">
+        Apex Lab connects your wearable to your work calendar and shows which parts of your day drain you — and which restore you. Evidence-based, privacy-first, built with researchers.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">
+          Start a pilot
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#insight" class="btn btn-secondary">
+          See the dashboard
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">24/7</span>
+          <span class="hero-meta-label">Continuous physiology</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">100%</span>
+          <span class="hero-meta-label">Your data, your server</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">6</span>
+          <span class="hero-meta-label">Wearables supported</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: live-looking dashboard card -->
+    <div class="hero-viz">
+      <div class="viz-header">
+        <div class="viz-brand">Apex Lab</div>
+        <div class="viz-live"><span class="viz-live-dot"></span>Live · Monday</div>
+      </div>
+
+      <div class="viz-top">
+        <div class="viz-kpi">
+          <div class="viz-kpi-label">Body Battery</div>
+          <div class="viz-kpi-value">73<span class="viz-kpi-unit">%</span></div>
+          <div class="viz-kpi-trend trend-up">▲ 12% vs. 7-day avg</div>
+        </div>
+        <div class="viz-kpi">
+          <div class="viz-kpi-label">Stress Index</div>
+          <div class="viz-kpi-value">32<span class="viz-kpi-unit">/100</span></div>
+          <div class="viz-kpi-trend trend-down">▼ 18% vs. 7-day avg</div>
+        </div>
+        <div class="viz-kpi">
+          <div class="viz-kpi-label">Recovery</div>
+          <div class="viz-kpi-value">7.2<span class="viz-kpi-unit">h</span></div>
+          <div class="viz-kpi-trend trend-up">▲ On target</div>
+        </div>
+      </div>
+
+      <div class="viz-chart">
+        <div class="viz-chart-label">
+          <span>Today · 9:00 → 18:00</span>
+          <span class="viz-chart-legend">
+            <span class="legend-bb">Body Battery</span>
+            <span class="legend-stress">Stress</span>
+          </span>
+        </div>
+
+        <svg class="viz-chart-svg" viewBox="0 0 440 170" preserveAspectRatio="none">
+          <!-- grid -->
+          <g stroke="rgba(74,70,64,0.06)" stroke-width="1">
+            <line x1="0" y1="42" x2="440" y2="42"/>
+            <line x1="0" y1="85" x2="440" y2="85"/>
+            <line x1="0" y1="128" x2="440" y2="128"/>
+          </g>
+
+          <!-- Body Battery area + line -->
+          <defs>
+            <linearGradient id="bbGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6B8F71" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#6B8F71" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,42 C40,46 70,30 110,52 C160,78 200,120 240,110 C280,100 320,74 360,66 C390,60 420,52 440,48 L440,170 L0,170 Z"
+                fill="url(#bbGrad)"/>
+          <path d="M0,42 C40,46 70,30 110,52 C160,78 200,120 240,110 C280,100 320,74 360,66 C390,60 420,52 440,48"
+                fill="none" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Stress line -->
+          <path d="M0,120 C30,118 60,105 90,90 C130,70 160,55 200,50 C230,48 260,60 300,80 C340,98 380,112 440,116"
+                fill="none" stroke="#A04838" stroke-width="2" stroke-linecap="round" stroke-dasharray="0"/>
+
+          <!-- Event markers -->
+          <g>
+            <circle cx="95" cy="48" r="4" fill="#A04838" stroke="#FFFFFF" stroke-width="2"/>
+            <circle cx="240" cy="110" r="4" fill="#6B8F71" stroke="#FFFFFF" stroke-width="2"/>
+            <circle cx="360" cy="66" r="4" fill="#A04838" stroke="#FFFFFF" stroke-width="2"/>
+          </g>
+        </svg>
+
+        <div class="viz-calendar">
+          <div class="cal-block cal-meet"><div class="cal-block-time">9:00</div>Stand-up</div>
+          <div class="cal-block cal-meet"><div class="cal-block-time">10:00</div>1:1</div>
+          <div class="cal-block cal-deep"><div class="cal-block-time">11:00</div>Deep work</div>
+          <div class="cal-block cal-deep"><div class="cal-block-time">12:00</div>Deep work</div>
+          <div class="cal-block cal-break"><div class="cal-block-time">13:00</div>Lunch</div>
+          <div class="cal-block cal-admin"><div class="cal-block-time">14:00</div>Admin</div>
+          <div class="cal-block cal-meet"><div class="cal-block-time">15:00</div>Client</div>
+          <div class="cal-block cal-deep"><div class="cal-block-time">16:00</div>Writing</div>
+        </div>
+      </div>
+
+      <!-- Floating annotations -->
+      <div class="viz-annotation viz-annotation-1">
+        <span class="viz-annotation-dot"></span>
+        Client call · Stress 68
+      </div>
+      <div class="viz-annotation viz-annotation-2">
+        <span class="viz-annotation-dot"></span>
+        Deep work · Recovered
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TRUST STRIP ═════════ -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-label">Works with your wearable</div>
+    <div class="trust-logos">
+      <img src="../Assets/logos/brands/garmin.png" alt="Garmin">
+      <img src="../Assets/logos/brands/whoop.png" alt="WHOOP">
+      <img src="../Assets/logos/brands/oura.png" alt="Oura">
+      <img src="../Assets/logos/brands/polar.svg" alt="Polar">
+      <span class="trust-logo-text">fitbit</span>
+      <span class="trust-logo-text">Labfront</span>
+    </div>
+    <div class="trust-badges">
+      <span class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg>
+        GDPR compliant
+      </span>
+      <span class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg>
+        DPIA available
+      </span>
+      <span class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg>
+        Your data, your server
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ THE INSIGHT ═════════ -->
+<section class="insight" id="insight">
+  <div class="insight-head">
+    <div class="insight-eyebrow">The Insight</div>
+    <h2>This is what <em>a real week</em> looks like.</h2>
+    <p class="insight-lead">
+      Every meeting, mapped against your body's response. The patterns you never had time to notice — now obvious in one view.
+    </p>
+  </div>
+
+  <div class="insight-frame">
+
+    <!-- floating callouts -->
+    <div class="callout callout-1">
+      <div class="callout-title">Tuesday afternoon dip</div>
+      Four back-to-back meetings after lunch. Stress peaked at 72. Recovery never kicked in before bed.
+    </div>
+
+    <div class="callout callout-2">
+      <div class="callout-title">Thursday restored you</div>
+      Two deep-work blocks and a 30-min walk between meetings. Body Battery climbed from 41 → 78.
+    </div>
+
+    <div class="callout callout-3">
+      <div class="callout-title">Friday's silent cost</div>
+      No meetings, but admin backlog spiked stress. The days "off" aren't always off.
+    </div>
+
+    <div class="insight-frame-header">
+      <div class="insight-frame-title">Week of April 14 <span>· demo data</span></div>
+      <div class="insight-tabs">
+        <button class="insight-tab active">Calendar × Body</button>
+        <button class="insight-tab">Tasks</button>
+        <button class="insight-tab">Sleep</button>
+        <button class="insight-tab">Recovery</button>
+      </div>
+    </div>
+
+    <!-- Week grid -->
+    <div class="insight-week">
+      <!-- hour column -->
+      <div class="week-daycol">
+        <div class="week-dayhead" style="visibility:hidden">HH</div>
+        <div class="week-hour">9</div>
+        <div class="week-hour">10</div>
+        <div class="week-hour">11</div>
+        <div class="week-hour">12</div>
+        <div class="week-hour">13</div>
+        <div class="week-hour">14</div>
+        <div class="week-hour">15</div>
+        <div class="week-hour">16</div>
+        <div class="week-hour">17</div>
+      </div>
+
+      <!-- Monday -->
+      <div class="week-daycol">
+        <div class="week-dayhead">Mon <span class="week-dayhead-meta">BB 62</span></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">9:00</div>Stand-up</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-deep" style="top:4px; height:64px;"><div class="week-event-time">11:00</div>Deep work</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-social" style="top:4px; height:28px;"><div class="week-event-time">13:00</div>Lunch walk</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:60px;"><div class="week-event-time">14:00</div>Client review</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-admin" style="top:4px; height:28px;"><div class="week-event-time">16:00</div>Email</div>
+        </div>
+        <div class="week-hour-cell"></div>
+      </div>
+
+      <!-- Tuesday -->
+      <div class="week-daycol">
+        <div class="week-dayhead">Tue <span class="week-dayhead-meta">BB 54</span></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">9:00</div>Stand-up</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">10:00</div>Partner sync</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">11:00</div>Budget review</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">13:00</div>Board prep</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:60px;"><div class="week-event-time">14:00</div>Investor call</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">16:00</div>1:1 Sara</div>
+        </div>
+        <div class="week-hour-cell"></div>
+      </div>
+
+      <!-- Wednesday -->
+      <div class="week-daycol">
+        <div class="week-dayhead">Wed <span class="week-dayhead-meta">BB 58</span></div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-deep" style="top:4px; height:92px;"><div class="week-event-time">10:00</div>Writing sprint</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-social" style="top:4px; height:28px;"><div class="week-event-time">13:00</div>Lunch</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-admin" style="top:4px; height:60px;"><div class="week-event-time">14:00</div>Admin</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">16:00</div>Team sync</div>
+        </div>
+        <div class="week-hour-cell"></div>
+      </div>
+
+      <!-- Thursday -->
+      <div class="week-daycol">
+        <div class="week-dayhead">Thu <span class="week-dayhead-meta">BB 78</span></div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-deep" style="top:4px; height:60px;"><div class="week-event-time">10:00</div>Deep work</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-social" style="top:4px; height:28px;"><div class="week-event-time">12:00</div>Walk</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-social" style="top:4px; height:28px;"><div class="week-event-time">13:00</div>Lunch</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-deep" style="top:4px; height:60px;"><div class="week-event-time">14:00</div>Deep work</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-meet" style="top:4px; height:28px;"><div class="week-event-time">16:00</div>Check-in</div>
+        </div>
+        <div class="week-hour-cell"></div>
+      </div>
+
+      <!-- Friday -->
+      <div class="week-daycol">
+        <div class="week-dayhead">Fri <span class="week-dayhead-meta">BB 49</span></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-admin" style="top:4px; height:60px;"><div class="week-event-time">9:00</div>Inbox zero</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-admin" style="top:4px; height:60px;"><div class="week-event-time">11:00</div>Expense report</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-social" style="top:4px; height:28px;"><div class="week-event-time">13:00</div>Lunch</div>
+        </div>
+        <div class="week-hour-cell">
+          <div class="week-event ev-admin" style="top:4px; height:60px;"><div class="week-event-time">14:00</div>Backlog</div>
+        </div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell"></div>
+        <div class="week-hour-cell"></div>
+      </div>
+    </div>
+
+    <!-- Body battery overlay bar -->
+    <div class="insight-overlay">
+      <div>
+        <div class="overlay-label">Body Battery · weekly</div>
+        <div class="overlay-lead">Thursday recovered you. Tuesday cost you the most.</div>
+      </div>
+      <svg class="overlay-chart" viewBox="0 0 500 60" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="bbWeekGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6B8F71" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#6B8F71" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,20 L100,28 L200,36 L300,48 L400,8 L500,42 L500,60 L0,60 Z" fill="url(#bbWeekGrad)"/>
+        <path d="M0,20 L100,28 L200,36 L300,48 L400,8 L500,42"
+              fill="none" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="0" cy="20" r="4" fill="#6B8F71"/>
+        <circle cx="100" cy="28" r="4" fill="#6B8F71"/>
+        <circle cx="200" cy="36" r="4" fill="#6B8F71"/>
+        <circle cx="300" cy="48" r="4" fill="#A04838"/>
+        <circle cx="400" cy="8" r="4" fill="#6B8F71"/>
+        <circle cx="500" cy="42" r="4" fill="#6B8F71"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Summary cards -->
+  <div class="insight-sum">
+    <div class="insight-sum-card is-alert">
+      <div class="insight-sum-num">+24%</div>
+      <div class="insight-sum-label">Stress on meeting-heavy days vs. mixed days</div>
+    </div>
+    <div class="insight-sum-card is-good">
+      <div class="insight-sum-num">−18%</div>
+      <div class="insight-sum-label">Recovery time when deep-work blocks exceed 90 minutes</div>
+    </div>
+    <div class="insight-sum-card">
+      <div class="insight-sum-num">2.3h</div>
+      <div class="insight-sum-label">Average Body Battery rebound after an outdoor walk</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab switching (visual only for prototype)
+  document.querySelectorAll('.insight-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.insight-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
